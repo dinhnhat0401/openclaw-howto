@@ -474,4 +474,4 @@ openclaw skill install https://github.com/you/my-openclaw-skill.git
 
 For skill chaining recipes and productivity patterns, see **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)**. For routine skill audits and cleanup, see **[OPERATIONS.md](../OPERATIONS.md)**. For a full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
 
-Skills misbehaving? See the [Troubleshooting Guide](../TROUBLESHOOTING.md) for debugging strategies.
+Skills misbehaving? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#5-skill-failures) for diagnosis, debug flow, and fix patterns.

@@ -375,4 +375,4 @@ openclaw config set permissions.browser.viewport.height 1080
 
 For browser automation recipes and scraping patterns, see **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)**. For routine browser health checks, see **[OPERATIONS.md](../OPERATIONS.md)**. For a full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
 
-Browser automation failing? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#7-browser-or-ui-automation-fails) for permission and selector debugging.
+Browser automation failing? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#8-browser-or-ui-automation-fails) for permission and selector debugging.

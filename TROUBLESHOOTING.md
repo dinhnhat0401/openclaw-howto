@@ -16,6 +16,7 @@ This guide is for diagnosing the failures that actually matter in production.
 | Workflow runs, but output is wrong | prompt/context issue |
 | Browser/GUI automation fails | permissions or environment issue |
 | Costs suddenly spike | model routing, cron frequency, or memory bloat |
+| A skill fails or produces bad output | bad config, missing dependency, auth, or version mismatch |
 | It used to work, now it acts weird | stale memory, expired auth, or version drift |
 
 ---
@@ -185,7 +186,57 @@ If gathered data is good but the summary/recommendation is bad, fix the prompt/c
 
 ---
 
-## 5. When to Use `skip`, `abort`, `retry`, or `fallback`
+## 5. Skill Failures
+
+### Symptoms
+
+- skill command errors on install or run
+- skill runs but output is empty or wrong
+- skill worked before but now fails
+- dry-run passes but real execution fails
+
+### Diagnose
+
+```bash
+openclaw skill list
+openclaw skill test <name> --dry-run
+openclaw skill run <name> --verbose
+openclaw logs --level error
+```
+
+### Common causes
+
+- **missing dependency** — skill depends on an integration that is not enabled or authenticated
+- **version mismatch** — skill was built for a different OpenClaw version
+- **bad config** — required parameters missing from `skill.yaml` or config
+- **permission denied** — skill needs filesystem, shell, or browser access that the current permission mode does not allow
+- **upstream API change** — external service changed its API and the skill has not been updated
+
+### Debug flow
+
+1. **Run with `--dry-run` first** to confirm the skill definition is valid
+2. **Run with `--verbose`** to see the full execution trace
+3. If the skill depends on an integration, test the integration separately with `openclaw integration test <name>`
+4. If it is a community skill, check for updates with `openclaw skill update <name>`
+5. If it is a custom skill, validate the `skill.yaml` schema
+
+### Fix patterns
+
+| Problem | Fix |
+|---|---|
+| Missing integration | `openclaw integration enable <name>` then `openclaw integration config <name>` |
+| Version mismatch | `openclaw skill update <name>` or pin to a compatible version |
+| Permission denied | Elevate permission mode or add the specific path/capability the skill needs |
+| Bad config | Check `skill.yaml` required fields, fill in missing parameters |
+| Stale cache | `openclaw skill remove <name>` then reinstall |
+
+### Smell test
+
+If a skill works in `--dry-run` but fails in real execution, the problem is almost always auth, permissions, or a missing runtime dependency — not the skill logic itself.
+
+---
+
+## 6. When to Use `skip`, `abort`, `retry`, or `fallback`
 
 | Mode | Use it when | Example |
 |---|---|---|
@@ -203,7 +254,7 @@ If gathered data is good but the summary/recommendation is bad, fix the prompt/c
 
 ---
 
-## 6. Memory Problems
+## 7. Memory Problems
 
 ### Symptoms of bad memory
 
@@ -247,7 +298,7 @@ not only in conversational memory.
 
 ---
 
-## 7. Browser or UI Automation Fails
+## 8. Browser or UI Automation Fails
 
 ### Distinguish two classes
 
@@ -282,7 +333,7 @@ Do not debug UI automation and app logic at the same time. First prove you can c
 
 ---
 
-## 8. Integration Auth Expired
+## 9. Integration Auth Expired
 
 ### Symptoms
 
@@ -306,7 +357,7 @@ Add a lightweight weekly integration health check instead of discovering expired
 
 ---
 
-## 9. Cost Spikes
+## 10. Cost Spikes
 
 ### Typical causes
 
@@ -335,7 +386,7 @@ openclaw usage --projection
 
 ---
 
-## 10. Operational Drift
+## 11. Operational Drift
 
 A lot of “OpenClaw got worse” is really drift.
 
@@ -360,7 +411,7 @@ Deletion is a productivity feature.
 
 ---
 
-## 11. Recovery Playbook
+## 12. Recovery Playbook
 
 When the system is messy, do not randomly poke it.
 
@@ -379,7 +430,7 @@ This order matters because it avoids “fixing” the wrong layer.
 
 ---
 
-## 12. The Most Common Reality
+## 13. The Most Common Reality
 
 Most OpenClaw problems are not deep model problems.
 
@@ -401,5 +452,6 @@ Fix the system before blaming the model.
 - [POWER_USER_PLAYBOOK.md](POWER_USER_PLAYBOOK.md)
 - [OPERATIONS.md](OPERATIONS.md)
 - [03-memory/README.md](03-memory/)
+- [04-skills/README.md](04-skills/)
 - [06-automation/README.md](06-automation/)
 - [08-workflows/README.md](08-workflows/)

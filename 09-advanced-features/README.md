@@ -642,4 +642,4 @@ jobs:
 
 For a full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
 
-Costs spiking or config broken? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#9-cost-spikes) for diagnosis and high-ROI fixes.
+Costs spiking or config broken? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#10-cost-spikes) for diagnosis and high-ROI fixes.

@@ -441,4 +441,4 @@ That is how a good OpenClaw setup compounds instead of decays.
 
 For a full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
 
-Memory acting stale or conflicting? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#6-memory-problems) for diagnosis and fix patterns.
+Memory acting stale or conflicting? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#7-memory-problems) for diagnosis and fix patterns.

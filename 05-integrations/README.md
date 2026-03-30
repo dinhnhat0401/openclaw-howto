@@ -502,4 +502,4 @@ sequenceDiagram
 
 For integration health monitoring routines, see **[OPERATIONS.md](../OPERATIONS.md)**. For production integration patterns, see **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)**. For a full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
 
-Auth expired or integration broken? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#8-integration-auth-expired) for diagnosis steps.
+Auth expired or integration broken? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#9-integration-auth-expired) for diagnosis steps.
