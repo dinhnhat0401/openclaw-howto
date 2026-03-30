@@ -1,11 +1,36 @@
+<div align="center">
+
 # Master OpenClaw in a Weekend
 
-> The comprehensive, community-driven guide to OpenClaw — the open-source personal AI assistant with 247,000+ GitHub stars. Go from installation to fully autonomous productivity workflows in one weekend.
+### The definitive guide to the #1 open-source AI assistant
 
-[![Stars](https://img.shields.io/github/stars/openclaw/openclaw?style=social)](https://github.com/openclaw/openclaw)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+*Go from installation to fully autonomous productivity workflows in one weekend.*
+
+<br/>
+
+[![GitHub Stars](https://img.shields.io/github/stars/dinhnhat0401/openclaw-howto?style=for-the-badge&logo=github&color=yellow)](https://github.com/dinhnhat0401/openclaw-howto/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/dinhnhat0401/openclaw-howto?style=for-the-badge&logo=github&color=blue)](https://github.com/dinhnhat0401/openclaw-howto/network/members)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-247K+%20%E2%AD%90-orange?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyTDEgMTJoM3Y5aDZ2LTZoNHY2aDZ2LTloM0wxMiAyeiIvPjwvc3ZnPg==)](https://github.com/openclaw/openclaw)
+
+[![Last Commit](https://img.shields.io/github/last-commit/dinhnhat0401/openclaw-howto?style=flat-square&color=purple)](https://github.com/dinhnhat0401/openclaw-howto/commits)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
+[![Modules](https://img.shields.io/badge/Modules-10-blue?style=flat-square)](#learning-path)
+[![Templates](https://img.shields.io/badge/Templates-25+-red?style=flat-square)](#use-cases-at-a-glance)
+
+<br/>
+
+**[Quick Start](#quick-start-15-minutes)** | **[Learning Path](#learning-path)** | **[Modules](#module-overview)** | **[Quick Reference](QUICK_REFERENCE.md)** | **[Catalog](CATALOG.md)**
+
+<br/>
 
 ---
+
+*If this guide helps you, please consider giving it a* **[star](https://github.com/dinhnhat0401/openclaw-howto/stargazers)** *— it helps others find it too.*
+
+---
+
+</div>
 
 ## The Problem This Guide Solves
 
@@ -182,6 +207,35 @@ The real 100x is what you do with those hours: the projects you ship, the decisi
 
 ---
 
+## Star History
+
+<div align="center">
+<a href="https://star-history.com/#dinhnhat0401/openclaw-howto&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=dinhnhat0401/openclaw-howto&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=dinhnhat0401/openclaw-howto&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=dinhnhat0401/openclaw-howto&type=Date" width="600" />
+  </picture>
+</a>
+</div>
+
+---
+
+## Share This Guide
+
+Found this useful? Help others discover it:
+
+<div align="center">
+
+[![Share on X](https://img.shields.io/badge/Share_on-X_%2F_Twitter-black?style=for-the-badge&logo=x)](https://twitter.com/intent/tweet?text=Master%20OpenClaw%20in%20a%20Weekend%20%E2%80%94%20the%20comprehensive%20guide%20to%20the%20%231%20open-source%20AI%20assistant%20(247K%2B%20%E2%AD%90)%0A%0A10%20modules%2C%20production-ready%20templates%2C%20automation%20workflows.%0A%0Ahttps%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto)
+[![Share on LinkedIn](https://img.shields.io/badge/Share_on-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto)
+[![Share on Reddit](https://img.shields.io/badge/Share_on-Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://reddit.com/submit?url=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&title=Master%20OpenClaw%20in%20a%20Weekend%20%E2%80%94%20Comprehensive%20Guide%20to%20the%20%231%20Open-Source%20AI%20Assistant)
+[![Share on Hacker News](https://img.shields.io/badge/Share_on-Hacker_News-F0652F?style=for-the-badge&logo=ycombinator&logoColor=white)](https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&t=Master%20OpenClaw%20in%20a%20Weekend)
+
+</div>
+
+---
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. We welcome:
@@ -193,12 +247,37 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. We welcome:
 
 ---
 
+## Sponsors
+
+<div align="center">
+
+If this guide saves you time, consider supporting its maintenance:
+
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/dinhnhat0401)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/dinhnhat0401)
+
+</div>
+
+---
+
 ## License
 
 MIT - See [LICENSE](LICENSE) for details.
 
 ---
 
-**OpenClaw Documentation:** [docs.openclaw.ai](https://docs.openclaw.ai) | **GitHub:** [github.com/openclaw/openclaw](https://github.com/openclaw/openclaw) | **Community:** [discord.gg/openclaw](https://discord.gg/openclaw)
+<div align="center">
+
+**[docs.openclaw.ai](https://docs.openclaw.ai)** | **[github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)** | **[discord.gg/openclaw](https://discord.gg/openclaw)**
 
 *Inspired by [claude-howto](https://github.com/luongnv89/claude-howto) by luongnv89.*
+
+<br/>
+
+**If you found this guide helpful, please [give it a star](https://github.com/dinhnhat0401/openclaw-howto/stargazers)** — it's the best way to support the project and help others find it.
+
+<br/>
+
+<sub>Made with dedication by the OpenClaw community.</sub>
+
+</div>

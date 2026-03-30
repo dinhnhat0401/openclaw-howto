@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: OpenClaw Official Docs
+    url: https://docs.openclaw.ai
+    about: Check the official OpenClaw documentation
+  - name: OpenClaw GitHub
+    url: https://github.com/openclaw/openclaw
+    about: Report issues with OpenClaw itself (not this guide)
+  - name: Community Discord
+    url: https://discord.gg/openclaw
+    about: Join the OpenClaw community
