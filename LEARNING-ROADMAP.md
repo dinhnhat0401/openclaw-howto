@@ -840,11 +840,15 @@ flowchart LR
 
 Once you have graduated all three levels, you are ready to:
 
-1. **Contribute skills** to the [OpenClaw Community Registry](https://registry.openclaw.ai)
-2. **Share workflow templates** via `openclaw workflow export` and the community repository
-3. **Mentor others** using this roadmap as a teaching aid
-4. **Contribute to this guide** -- see [CONTRIBUTING.md](CONTRIBUTING.md)
-5. **Push the boundaries** -- combine OpenClaw with local models, build custom integrations, create novel workflow patterns
+1. **Run your setup like a system** -- see [OPERATIONS.md](OPERATIONS.md) for weekly/monthly review checklists, reliability practices, and cost monitoring
+2. **Adopt power-user habits** -- see [POWER_USER_PLAYBOOK.md](POWER_USER_PLAYBOOK.md) for the patterns that separate productive setups from toy demos
+3. **Contribute skills** to the [OpenClaw Community Registry](https://registry.openclaw.ai)
+4. **Share workflow templates** via `openclaw workflow export` and the community repository
+5. **Mentor others** using this roadmap as a teaching aid
+6. **Contribute to this guide** -- see [CONTRIBUTING.md](CONTRIBUTING.md)
+7. **Push the boundaries** -- combine OpenClaw with local models, build custom integrations, create novel workflow patterns
+
+When things break, consult [TROUBLESHOOTING.md](TROUBLESHOOTING.md) -- it covers the failures that actually matter in production.
 
 The best way to solidify your knowledge is to teach it. Consider writing a tutorial, recording a walkthrough, or answering questions on the [OpenClaw Discord](https://discord.gg/openclaw).
 

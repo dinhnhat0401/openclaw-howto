@@ -647,3 +647,11 @@ OpenClaw supports multiple LLM providers and models. Automatic routing sends eac
 | Debug a failing automation | CLI Commands > Testing and Debugging |
 | Monitor costs | CLI Commands > Usage and Billing |
 | Secure your installation | Permission Modes > Custom Mode |
+
+---
+
+## Recommended Companion Docs
+
+- [OPERATIONS.md](OPERATIONS.md) -- weekly/monthly review checklists, reliability practices, cost monitoring
+- [POWER_USER_PLAYBOOK.md](POWER_USER_PLAYBOOK.md) -- high-output habits and operator-level patterns
+- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) -- diagnosing the failures that actually matter in production
