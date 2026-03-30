@@ -1,114 +1,328 @@
 <div align="center">
 
+<img src="https://img.shields.io/badge/%F0%9F%A6%80-OpenClaw-black?style=for-the-badge&labelColor=FF6600&color=000000" height="50" />
+
+<br/>
+<br/>
+
 # Master OpenClaw in a Weekend
 
-### The definitive guide to the #1 open-source AI assistant
+<h3>
+  <em>The ultimate guide to the #1 open-source AI assistant</em>
+</h3>
 
-*Go from installation to fully autonomous productivity workflows in one weekend.*
-
-<br/>
-
-[![GitHub Stars](https://img.shields.io/github/stars/dinhnhat0401/openclaw-howto?style=for-the-badge&logo=github&color=yellow)](https://github.com/dinhnhat0401/openclaw-howto/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/dinhnhat0401/openclaw-howto?style=for-the-badge&logo=github&color=blue)](https://github.com/dinhnhat0401/openclaw-howto/network/members)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-247K+%20%E2%AD%90-orange?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyTDEgMTJoM3Y5aDZ2LTZoNHY2aDZ2LTloM0wxMiAyeiIvPjwvc3ZnPg==)](https://github.com/openclaw/openclaw)
-
-[![Last Commit](https://img.shields.io/github/last-commit/dinhnhat0401/openclaw-howto?style=flat-square&color=purple)](https://github.com/dinhnhat0401/openclaw-howto/commits)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](CONTRIBUTING.md)
-[![Modules](https://img.shields.io/badge/Modules-10-blue?style=flat-square)](#learning-path)
-[![Templates](https://img.shields.io/badge/Templates-25+-red?style=flat-square)](#use-cases-at-a-glance)
+<p>
+  <strong>10 modules</strong> &bull; <strong>25+ templates</strong> &bull; <strong>9,500+ lines</strong> &bull; <strong>100% free</strong>
+</p>
 
 <br/>
 
-**[Quick Start](#quick-start-15-minutes)** | **[Learning Path](#learning-path)** | **[Modules](#module-overview)** | **[Quick Reference](QUICK_REFERENCE.md)** | **[Catalog](CATALOG.md)**
+<a href="https://github.com/dinhnhat0401/openclaw-howto/stargazers"><img src="https://img.shields.io/github/stars/dinhnhat0401/openclaw-howto?style=for-the-badge&logo=github&logoColor=white&label=STARS&color=FFD700" /></a>
+&nbsp;
+<a href="https://github.com/dinhnhat0401/openclaw-howto/network/members"><img src="https://img.shields.io/github/forks/dinhnhat0401/openclaw-howto?style=for-the-badge&logo=git&logoColor=white&label=FORKS&color=4FC3F7" /></a>
+&nbsp;
+<a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-2ECC71?style=for-the-badge" /></a>
+&nbsp;
+<a href="https://github.com/openclaw/openclaw"><img src="https://img.shields.io/badge/OPENCLAW-247K+%20%E2%AD%90-FF6600?style=for-the-badge" /></a>
+
+<br/>
+<br/>
+
+<a href="#-quick-start"><img src="https://img.shields.io/badge/Quick_Start-5_min-2ECC71?style=flat-square" /></a>
+<a href="#-learning-path"><img src="https://img.shields.io/badge/Learning_Path-3_Levels-9B59B6?style=flat-square" /></a>
+<a href="#-10-modules"><img src="https://img.shields.io/badge/Modules-10-3498DB?style=flat-square" /></a>
+<a href="QUICK_REFERENCE.md"><img src="https://img.shields.io/badge/Cheat_Sheet-Reference-E74C3C?style=flat-square" /></a>
+<a href="CATALOG.md"><img src="https://img.shields.io/badge/Full_Catalog-95+_commands-F39C12?style=flat-square" /></a>
+<a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square" /></a>
+
+<br/>
+<br/>
+
+<table>
+  <tr>
+    <td align="center"><b>680+</b><br/><sub>hours saved/year</sub></td>
+    <td align="center"><b>50+</b><br/><sub>integrations</sub></td>
+    <td align="center"><b>15+</b><br/><sub>chat platforms</sub></td>
+    <td align="center"><b>25+</b><br/><sub>ready templates</sub></td>
+    <td align="center"><b>1</b><br/><sub>weekend to learn</sub></td>
+  </tr>
+</table>
 
 <br/>
 
----
+> **Love this guide?** Give it a **[star](https://github.com/dinhnhat0401/openclaw-howto/stargazers)** to help others find it.
 
-*If this guide helps you, please consider giving it a* **[star](https://github.com/dinhnhat0401/openclaw-howto/stargazers)** *— it helps others find it too.*
-
----
+<br/>
 
 </div>
 
-## The Problem This Guide Solves
+---
 
-OpenClaw's [official docs](https://docs.openclaw.ai) describe features. This guide shows you **how to combine them** into production workflows that save you hours every day.
+<br/>
 
-The docs tell you channels exist. This guide shows you how to route urgent messages to WhatsApp, dev tasks to Slack, and personal reminders to Telegram — automatically.
+## The Problem
 
-The docs tell you skills are modular. This guide shows you how to chain `email-manager` → `calendar-sync` → `task-manager` into an autonomous inbox-to-action pipeline.
+OpenClaw has **247,000+ stars** and incredible docs. But docs describe features. They don't show you how to **combine** them.
+
+<table>
+<tr>
+<td width="50%">
+
+**What the docs tell you**
+
+- Channels exist
+- Skills are modular
+- Cron jobs are possible
+- Integrations are available
+
+</td>
+<td width="50%">
+
+**What this guide shows you**
+
+- Route urgent messages to WhatsApp, dev tasks to Slack, personal to Telegram — **automatically**
+- Chain `email-manager` &rarr; `calendar-sync` &rarr; `task-manager` into an **autonomous pipeline**
+- Build a morning briefing that runs at 7:30 AM with calendar + email + GitHub + weather
+- Wire 50+ services into workflows that **save 13+ hours/week**
+
+</td>
+</tr>
+</table>
+
+<br/>
 
 ---
 
-## What's Included
+<br/>
 
-| Category | Contents |
-|---|---|
-| **10 Tutorial Modules** | Step-by-step guides from beginner to advanced |
-| **Production-Ready Templates** | Copy-paste configs, skills, cron jobs, and workflows |
-| **Architecture Diagrams** | Mermaid visualizations of every major subsystem |
-| **Decision Matrices** | When to use what — channels, models, integrations |
-| **Learning Roadmap** | Structured 3-level progression with self-assessment |
-| **Quick Reference** | Cheat sheets, command tables, and lookup guides |
-| **Feature Catalog** | Complete inventory of commands, skills, and integrations |
+## What's Inside
+
+<div align="center">
+
+<table>
+<tr>
+  <td align="center" width="150">
+    <br/>
+    <img src="https://img.shields.io/badge/-10-3498DB?style=for-the-badge&logo=bookopen&logoColor=white" /><br/>
+    <b>Tutorial<br/>Modules</b><br/>
+    <sub>Beginner to Advanced</sub><br/><br/>
+  </td>
+  <td align="center" width="150">
+    <br/>
+    <img src="https://img.shields.io/badge/-25+-E74C3C?style=for-the-badge" /><br/>
+    <b>Production<br/>Templates</b><br/>
+    <sub>Copy-paste ready</sub><br/><br/>
+  </td>
+  <td align="center" width="150">
+    <br/>
+    <img src="https://img.shields.io/badge/-50+-2ECC71?style=for-the-badge" /><br/>
+    <b>Service<br/>Integrations</b><br/>
+    <sub>Gmail, GitHub, Notion...</sub><br/><br/>
+  </td>
+  <td align="center" width="150">
+    <br/>
+    <img src="https://img.shields.io/badge/-15+-9B59B6?style=for-the-badge" /><br/>
+    <b>Architecture<br/>Diagrams</b><br/>
+    <sub>Mermaid visualizations</sub><br/><br/>
+  </td>
+  <td align="center" width="150">
+    <br/>
+    <img src="https://img.shields.io/badge/-3-F39C12?style=for-the-badge" /><br/>
+    <b>Learning<br/>Levels</b><br/>
+    <sub>With self-assessment</sub><br/><br/>
+  </td>
+</tr>
+</table>
+
+</div>
+
+<br/>
 
 ---
 
-## Learning Path
+<br/>
 
-### Level 1: Beginner (3-4 hours)
-
-| Module | Time | What You'll Learn |
-|---|---|---|
-| [01 - Getting Started](01-getting-started/) | 45 min | Installation, configuration, first interaction |
-| [02 - Channels](02-channels/) | 45 min | Connect WhatsApp, Telegram, Slack, Discord, and more |
-| [03 - Memory](03-memory/) | 45 min | Persistent context, teaching OpenClaw about you |
-| [10 - CLI Reference](10-cli/) | 30 min | Every command at your fingertips |
-
-### Level 2: Intermediate (4-5 hours)
-
-| Module | Time | What You'll Learn |
-|---|---|---|
-| [04 - Skills](04-skills/) | 1.5 hours | Install, create, and chain modular capabilities |
-| [05 - Integrations](05-integrations/) | 1 hour | Connect 50+ services (Gmail, GitHub, Notion, etc.) |
-| [06 - Automation](06-automation/) | 1.5 hours | Cron jobs, event triggers, background tasks |
-
-### Level 3: Advanced (4-5 hours)
-
-| Module | Time | What You'll Learn |
-|---|---|---|
-| [07 - Browser Automation](07-browser-automation/) | 1 hour | Web scraping, form filling, visual testing |
-| [08 - Workflows](08-workflows/) | 2 hours | Multi-step autonomous pipelines |
-| [09 - Advanced Features](09-advanced-features/) | 1.5 hours | Model routing, permissions, security, performance |
-
----
-
-## Quick Start (15 minutes)
+## Quick Start
 
 ```bash
-# Install
-brew install openclaw-cli
-
-# Guided setup — API key, channels, permissions
-openclaw onboard
-
-# Start OpenClaw
-openclaw start
+brew install openclaw-cli    # Install
+openclaw onboard             # Setup wizard (API key, channels, permissions)
+openclaw start               # Launch
 ```
 
-Then send your first message on any connected channel:
+Then message OpenClaw on any connected channel:
 
 ```
 "What can you do?"
 ```
 
-OpenClaw will introduce itself, list its capabilities, and ask how it can help. From there, start with the [Getting Started module](01-getting-started/).
+That's it. You're running. Now dive into the [modules](#-10-modules).
+
+<br/>
 
 ---
 
-## Use Cases at a Glance
+<br/>
+
+## Learning Path
+
+<div align="center">
+
+```mermaid
+graph LR
+    A["Level 1\nFoundation\n3-4 hrs"] -->|"ready"| B["Level 2\nIntegration\n4-5 hrs"]
+    B -->|"ready"| C["Level 3\nMastery\n4-5 hrs"]
+
+    style A fill:#2ECC71,stroke:#27AE60,color:#fff
+    style B fill:#3498DB,stroke:#2980B9,color:#fff
+    style C fill:#9B59B6,stroke:#8E44AD,color:#fff
+```
+
+</div>
+
+<br/>
+
+<details>
+<summary><b>Level 1: Foundation</b> &nbsp; <img src="https://img.shields.io/badge/-Beginner-2ECC71?style=flat-square" /> &nbsp; <code>3-4 hours</code></summary>
+<br/>
+
+| # | Module | Time | What You'll Learn |
+|:---:|---|:---:|---|
+| 01 | **[Getting Started](01-getting-started/)** | 45 min | Installation, configuration, first interaction |
+| 02 | **[Channels](02-channels/)** | 45 min | Connect WhatsApp, Telegram, Slack, Discord, and more |
+| 03 | **[Memory](03-memory/)** | 45 min | Persistent context, teaching OpenClaw about you |
+| 10 | **[CLI Reference](10-cli/)** | 30 min | Every command at your fingertips |
+
+</details>
+
+<details>
+<summary><b>Level 2: Integration</b> &nbsp; <img src="https://img.shields.io/badge/-Intermediate-3498DB?style=flat-square" /> &nbsp; <code>4-5 hours</code></summary>
+<br/>
+
+| # | Module | Time | What You'll Learn |
+|:---:|---|:---:|---|
+| 04 | **[Skills](04-skills/)** | 1.5 hrs | Install, create, and chain modular capabilities |
+| 05 | **[Integrations](05-integrations/)** | 1 hr | Connect 50+ services (Gmail, GitHub, Notion, etc.) |
+| 06 | **[Automation](06-automation/)** | 1.5 hrs | Cron jobs, event triggers, background tasks |
+
+</details>
+
+<details>
+<summary><b>Level 3: Mastery</b> &nbsp; <img src="https://img.shields.io/badge/-Advanced-9B59B6?style=flat-square" /> &nbsp; <code>4-5 hours</code></summary>
+<br/>
+
+| # | Module | Time | What You'll Learn |
+|:---:|---|:---:|---|
+| 07 | **[Browser Automation](07-browser-automation/)** | 1 hr | Web research, form filling, data extraction |
+| 08 | **[Workflows](08-workflows/)** | 2 hrs | Multi-step autonomous pipelines |
+| 09 | **[Advanced Features](09-advanced-features/)** | 1.5 hrs | Model routing, permissions, security, performance |
+
+</details>
+
+<br/>
+
+---
+
+<br/>
+
+## 10 Modules
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="33%">
+
+### [01 Getting Started](01-getting-started/)
+Install on macOS, Linux, Windows.<br/>Config walkthrough. First interaction.
+
+<img src="https://img.shields.io/badge/-Beginner-2ECC71?style=flat-square" /> `45 min`
+
+</td>
+<td align="center" width="33%">
+
+### [02 Channels](02-channels/)
+15+ messaging platforms.<br/>Multi-channel routing. Permissions.
+
+<img src="https://img.shields.io/badge/-Beginner-2ECC71?style=flat-square" /> `45 min`
+
+</td>
+<td align="center" width="33%">
+
+### [03 Memory](03-memory/)
+Persistent memory system.<br/>Teach OpenClaw about you.
+
+<img src="https://img.shields.io/badge/-Beginner-2ECC71?style=flat-square" /> `45 min`
+
+</td>
+</tr>
+<tr>
+<td align="center">
+
+### [04 Skills](04-skills/)
+Install, create, and chain<br/>modular capabilities.
+
+<img src="https://img.shields.io/badge/-Intermediate-3498DB?style=flat-square" /> `1.5 hrs`
+
+</td>
+<td align="center">
+
+### [05 Integrations](05-integrations/)
+Gmail, GitHub, Notion, Spotify<br/>and 50+ more services.
+
+<img src="https://img.shields.io/badge/-Intermediate-3498DB?style=flat-square" /> `1 hr`
+
+</td>
+<td align="center">
+
+### [06 Automation](06-automation/)
+Cron jobs. Event triggers.<br/>24/7 background tasks.
+
+<img src="https://img.shields.io/badge/-Intermediate-3498DB?style=flat-square" /> `1.5 hrs`
+
+</td>
+</tr>
+<tr>
+<td align="center">
+
+### [07 Browser](07-browser-automation/)
+Web research. Form filling.<br/>Data extraction. Testing.
+
+<img src="https://img.shields.io/badge/-Advanced-9B59B6?style=flat-square" /> `1 hr`
+
+</td>
+<td align="center">
+
+### [08 Workflows](08-workflows/)
+Autonomous multi-step pipelines.<br/>PR review. Meeting autopilot.
+
+<img src="https://img.shields.io/badge/-Advanced-9B59B6?style=flat-square" /> `2 hrs`
+
+</td>
+<td align="center">
+
+### [09 Advanced](09-advanced-features/)
+Model routing. Security.<br/>Performance. Cost control.
+
+<img src="https://img.shields.io/badge/-Advanced-9B59B6?style=flat-square" /> `1.5 hrs`
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+**[10 CLI Reference](10-cli/)** &mdash; Every `openclaw` command documented &nbsp; <img src="https://img.shields.io/badge/-Beginner-2ECC71?style=flat-square" /> `30 min`
+
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+## Use Cases
 
 ```mermaid
 mindmap
@@ -140,72 +354,69 @@ mindmap
       Personal CRM
 ```
 
----
-
-## Supporting Documents
-
-| Document | Purpose |
-|---|---|
-| [LEARNING-ROADMAP.md](LEARNING-ROADMAP.md) | Structured 3-level progression with milestones |
-| [QUICK_REFERENCE.md](QUICK_REFERENCE.md) | Cheat sheets and lookup tables |
-| [CATALOG.md](CATALOG.md) | Complete feature inventory |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute to this guide |
-| [CHANGELOG.md](CHANGELOG.md) | Version history |
+<br/>
 
 ---
 
-## Module Overview
+<br/>
 
-### [01 - Getting Started](01-getting-started/)
-Installation on macOS, Linux, and Windows (WSL2). Configuration walkthrough. API key setup. Your first interaction. Understanding the Control UI dashboard.
+## The Numbers
 
-### [02 - Channels](02-channels/)
-Connect 15+ messaging platforms. Multi-channel routing rules. Per-channel permissions. Channel-specific best practices. The right channel for the right task.
+<div align="center">
 
-### [03 - Memory](03-memory/)
-How persistent memory works. Memory stack architecture. Teaching OpenClaw about yourself. Memory commands. Auditing and pruning. The compound effect of good context.
+<table>
+<tr>
+<th width="40%">Without OpenClaw</th>
+<th width="40%">With OpenClaw</th>
+<th width="20%">Saved</th>
+</tr>
+<tr><td>30 min reading emails</td><td>5 min AI-triaged inbox</td><td><b>25 min</b></td></tr>
+<tr><td>45 min in status meetings</td><td>5 min reading auto-summaries</td><td><b>40 min</b></td></tr>
+<tr><td>60 min on code review</td><td>15 min reviewing AI flags</td><td><b>45 min</b></td></tr>
+<tr><td>20 min writing standups</td><td>2 min approve auto-generated</td><td><b>18 min</b></td></tr>
+<tr><td>30 min scheduling</td><td>5 min confirming suggestions</td><td><b>25 min</b></td></tr>
+<tr><td>45 min researching</td><td>10 min reviewing AI research</td><td><b>35 min</b></td></tr>
+<tr><td>15 min organizing notes</td><td>0 min (automated)</td><td><b>15 min</b></td></tr>
+<tr><td colspan="2" align="right"><b>Total daily savings:</b></td><td><b>~2h 43m</b></td></tr>
+</table>
 
-### [04 - Skills](04-skills/)
-The skill system explained. Installing community skills. Creating custom skills with `skill.yaml`. Skill chaining and pipelines. Three-level loading. Sharing skills.
+<br/>
 
-### [05 - Integrations](05-integrations/)
-50+ service connectors. Productivity (Obsidian, Notion, Todoist). Communication (Gmail, Calendar). Developer tools (GitHub, Jira, Linear). Smart home (Hue, HomeKit). Media (Spotify). Finance (Plaid, Stripe).
+<table>
+<tr>
+  <td align="center"><h2>13+</h2><sub>hours/week reclaimed</sub></td>
+  <td align="center"><h2>680+</h2><sub>hours/year</sub></td>
+  <td align="center"><h2>17</h2><sub>extra work weeks</sub></td>
+</tr>
+</table>
 
-### [06 - Automation](06-automation/)
-Cron jobs and scheduling. Event-driven triggers. Background tasks. Morning briefings, EOD summaries, inbox triage, PR reminders. Building a 24/7 productivity machine.
+</div>
 
-### [07 - Browser Automation](07-browser-automation/)
-Headless and visible browser control. Web research with citations. Form filling. Data extraction. Visual testing. Screenshot workflows.
+<br/>
 
-### [08 - Workflows](08-workflows/)
-Multi-step autonomous pipelines. PR review pipeline. Meeting autopilot. Research-to-decision pipeline. Incident response. Personal CRM. Workflow templates.
+---
 
-### [09 - Advanced Features](09-advanced-features/)
-Model selection and routing. Permission modes. Security hardening. Performance tuning. Cost optimization. Network policies. Sensitive data handling. Local model fallback.
+<br/>
 
-### [10 - CLI Reference](10-cli/)
-Every `openclaw` command documented. Flags, options, and examples. Configuration management. Troubleshooting. Debug mode.
+## Resources
+
+<div align="center">
+
+| | Document | What's Inside |
+|:---:|---|---|
+| **[LEARNING-ROADMAP.md](LEARNING-ROADMAP.md)** | Learning Roadmap | 3-level progression, quizzes, 5-week timeline |
+| **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** | Quick Reference | Cheat sheets, lookup tables, one-pagers |
+| **[CATALOG.md](CATALOG.md)** | Feature Catalog | 95+ commands, 50+ integrations, all skills |
+| **[CONTRIBUTING.md](CONTRIBUTING.md)** | Contributing | How to add modules, templates, translations |
+| **[CHANGELOG.md](CHANGELOG.md)** | Changelog | Version history and release notes |
+
+</div>
+
+<br/>
 
 ---
 
-## The 100x Productivity Equation
-
-| Without OpenClaw | With OpenClaw | Daily Savings |
-|---|---|---|
-| 30 min reading emails | 5 min reviewing AI-triaged inbox | 25 min |
-| 45 min in status meetings | 5 min reading auto-summaries | 40 min |
-| 60 min on code review | 15 min reviewing AI-flagged issues | 45 min |
-| 20 min writing standups | 2 min approving auto-generated | 18 min |
-| 30 min scheduling/calendar | 5 min confirming AI suggestions | 25 min |
-| 45 min researching decisions | 10 min reviewing AI research | 35 min |
-| 15 min organizing files/notes | 0 min (automated) | 15 min |
-| **3 hrs 25 min** | **42 min** | **~2 hrs 43 min/day** |
-
-**13+ hours/week reclaimed. 680+ hours/year. 17 extra work weeks.**
-
-The real 100x is what you do with those hours: the projects you ship, the decisions you make faster, and the cognitive load you permanently offload to a system that never forgets, never sleeps, and never drops the ball.
-
----
+<br/>
 
 ## Star History
 
@@ -219,65 +430,89 @@ The real 100x is what you do with those hours: the projects you ship, the decisi
 </a>
 </div>
 
+<br/>
+
 ---
+
+<br/>
 
 ## Share This Guide
 
-Found this useful? Help others discover it:
-
 <div align="center">
 
-[![Share on X](https://img.shields.io/badge/Share_on-X_%2F_Twitter-black?style=for-the-badge&logo=x)](https://twitter.com/intent/tweet?text=Master%20OpenClaw%20in%20a%20Weekend%20%E2%80%94%20the%20comprehensive%20guide%20to%20the%20%231%20open-source%20AI%20assistant%20(247K%2B%20%E2%AD%90)%0A%0A10%20modules%2C%20production-ready%20templates%2C%20automation%20workflows.%0A%0Ahttps%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto)
-[![Share on LinkedIn](https://img.shields.io/badge/Share_on-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto)
-[![Share on Reddit](https://img.shields.io/badge/Share_on-Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://reddit.com/submit?url=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&title=Master%20OpenClaw%20in%20a%20Weekend%20%E2%80%94%20Comprehensive%20Guide%20to%20the%20%231%20Open-Source%20AI%20Assistant)
-[![Share on Hacker News](https://img.shields.io/badge/Share_on-Hacker_News-F0652F?style=for-the-badge&logo=ycombinator&logoColor=white)](https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&t=Master%20OpenClaw%20in%20a%20Weekend)
+<a href="https://twitter.com/intent/tweet?text=Master%20OpenClaw%20in%20a%20Weekend%20%E2%80%94%20the%20ultimate%20guide%20to%20the%20%231%20open-source%20AI%20assistant%20(247K%2B%20%E2%AD%90)%0A%0A10%20modules%20%E2%80%A2%2025%2B%20templates%20%E2%80%A2%2050%2B%20integrations%0A%0Ahttps%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto"><img src="https://img.shields.io/badge/Tweet_it-000000?style=for-the-badge&logo=x&logoColor=white" height="35" /></a>
+&nbsp;
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto"><img src="https://img.shields.io/badge/Share-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" height="35" /></a>
+&nbsp;
+<a href="https://reddit.com/submit?url=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&title=Master%20OpenClaw%20in%20a%20Weekend%20%E2%80%94%20Ultimate%20Guide"><img src="https://img.shields.io/badge/Post-FF4500?style=for-the-badge&logo=reddit&logoColor=white" height="35" /></a>
+&nbsp;
+<a href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&t=Master%20OpenClaw%20in%20a%20Weekend"><img src="https://img.shields.io/badge/Submit-F0652F?style=for-the-badge&logo=ycombinator&logoColor=white" height="35" /></a>
 
 </div>
 
+<br/>
+
 ---
+
+<br/>
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. We welcome:
+We welcome contributions! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for guidelines.
 
-- New workflow templates and examples
-- Module improvements and corrections
-- Integration guides for additional services
-- Translations
+<table>
+<tr>
+<td>New workflow templates</td>
+<td>Module improvements</td>
+<td>Integration guides</td>
+<td>Translations</td>
+</tr>
+</table>
+
+<br/>
 
 ---
 
-## Sponsors
+<br/>
+
+## Support
 
 <div align="center">
 
-If this guide saves you time, consider supporting its maintenance:
+*If this guide saves you time, consider supporting its maintenance:*
 
-[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/dinhnhat0401)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/nhataschooT)
+<br/>
+
+<a href="https://github.com/sponsors/dinhnhat0401"><img src="https://img.shields.io/badge/Sponsor_on_GitHub-%E2%9D%A4-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white" height="40" /></a>
+&nbsp;&nbsp;
+<a href="https://buymeacoffee.com/nhataschooT"><img src="https://img.shields.io/badge/Buy_Me_a_Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=000000" height="40" /></a>
 
 </div>
 
----
-
-## License
-
-MIT - See [LICENSE](LICENSE) for details.
+<br/>
 
 ---
 
 <div align="center">
 
-**[docs.openclaw.ai](https://docs.openclaw.ai)** | **[github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)** | **[discord.gg/openclaw](https://discord.gg/openclaw)**
+<br/>
 
-*Inspired by [claude-howto](https://github.com/luongnv89/claude-howto) by luongnv89.*
+**[docs.openclaw.ai](https://docs.openclaw.ai)** &nbsp;&bull;&nbsp; **[github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)** &nbsp;&bull;&nbsp; **[discord.gg/openclaw](https://discord.gg/openclaw)**
 
 <br/>
 
-**If you found this guide helpful, please [give it a star](https://github.com/dinhnhat0401/openclaw-howto/stargazers)** — it's the best way to support the project and help others find it.
+*Inspired by [claude-howto](https://github.com/luongnv89/claude-howto) by luongnv89*
 
 <br/>
 
-<sub>Made with dedication by the OpenClaw community.</sub>
+---
+
+<br/>
+
+**If this guide helped you, a [star](https://github.com/dinhnhat0401/openclaw-howto/stargazers) means the world.**
+
+<sub>Made with care by the OpenClaw community.</sub>
+
+<br/>
 
 </div>
