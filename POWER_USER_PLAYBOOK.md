@@ -250,6 +250,86 @@ Every week:
 
 If you want top-tier output, copy the habits, not just the configuration.
 
+## Operator Mode: The Real Productivity Rules
+
+These are the rules that actually increase output.
+
+### 1. Bias toward action
+
+Do not stop at analysis if the next step is obvious and safe.
+
+Bad:
+- explain the problem elegantly
+- stop
+
+Good:
+- explain briefly
+- make the change
+- validate it
+- summarize what matters
+
+### 2. Prefer artifacts over advice
+
+Advice is cheap. Artifacts move work.
+
+Prefer producing:
+
+- commits
+- pushed branches
+- reviewed PRs
+- cleaned-up docs
+- reusable templates
+- checklists that prevent repeated mistakes
+
+### 3. Keep the loop tight
+
+For most work, the winning loop is:
+
+1. understand the target
+2. inspect reality
+3. find the bottleneck
+4. remove the bottleneck
+5. validate
+6. move to the next highest-leverage delta
+
+This is what high-output operation looks like in practice.
+
+### 4. Minimize noise
+
+Do not confuse activity with progress.
+
+That means:
+
+- fewer channels
+- fewer automations
+- fewer updates
+- fewer nits
+- fewer repeated alerts
+
+The setup should feel sharper, not busier.
+
+### 5. Be cost-aware without becoming timid
+
+Cost matters. Stalling costs more.
+
+The right rule is:
+
+- use the cheapest option that is still likely to do the job well
+- escalate only when quality or risk justifies it
+- keep momentum when one provider/tool is unavailable by falling back intelligently
+
+### 6. Make the system easier after every pass
+
+A good OpenClaw operator leaves behind:
+
+- cleaner docs
+- stronger defaults
+- less ambiguity
+- fewer repeated explanations
+- fewer fragile manual steps
+
+Every iteration should improve both the result and the environment around the result.
+
 ### 1. Write operating rules into files
 
 Do not rely on “it should remember.”
