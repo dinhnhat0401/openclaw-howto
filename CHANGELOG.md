@@ -6,6 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [v1.1.0] -- 2026-03-31
+
+### Added
+
+- **POWER_USER_PLAYBOOK.md:** Complete guide covering the 2-hour setup, productivity stack (workspace files, memory, daily automations, high-value workflows, weekly maintenance), operator mode principles, author-level habits, default setup recommendations, first-week plan, and anti-patterns.
+- **OPENCLAW_PRODUCTIVITY_STACK.md:** One-page compact blueprint for maximizing work output with OpenClaw.
+- **OPERATIONS.md:** Operational guide covering weekly and monthly review checklists with actionable CLI commands, reliability practices, change ladder, backup strategy, multi-machine guidance, and promotion/retirement rules.
+- **TROUBLESHOOTING.md:** Deep troubleshooting guide covering 13 failure categories: startup, channels, cron, workflow output, skill failures, error handling modes, memory problems, browser/UI automation, integration auth, cost spikes, operational drift, recovery playbook, and common root causes.
+
+### Improved
+
+- **Cross-links:** Added consistent cross-links to OPERATIONS, POWER_USER_PLAYBOOK, TROUBLESHOOTING, QUICK_REFERENCE, CATALOG, and LEARNING-ROADMAP across all 10 modules.
+- **Troubleshooting:** Added skill failures section (Section 5) with diagnosis commands, debug flow, and fix patterns.
+- **Troubleshooting:** Expanded recovery playbook (Section 12) with step-by-step CLI commands for each layer of the stack.
+- **Operations:** Added actionable CLI commands to weekly and monthly review checklists, replacing prose-only guidance.
+- **Getting Started:** Added troubleshooting cross-link matching all other modules.
+- **Contributing:** Updated to reference `trunk` as the target branch instead of `main`.
+- **README:** Redesigned for visual appeal with badges, module grid, learning path diagram, use-case mind map, and time-savings table.
+
+---
+
 ## [v1.0.0] -- 2026-03-30
 
 ### Features
@@ -32,4 +53,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ---
 
 <!-- Comparison URLs -->
+[v1.1.0]: https://github.com/openclaw/openclaw-howto/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/openclaw/openclaw-howto/releases/tag/v1.0.0
