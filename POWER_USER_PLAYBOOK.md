@@ -246,13 +246,9 @@ Every week:
 
 ---
 
-## The “Author-Level” Habits
-
-If you want top-tier output, copy the habits, not just the configuration.
-
 ## Operator Mode: The Real Productivity Rules
 
-These are the rules that actually increase output.
+If you want top-tier output, copy the habits, not just the configuration. These are the rules that actually increase output.
 
 ### 1. Bias toward action
 
@@ -329,6 +325,12 @@ A good OpenClaw operator leaves behind:
 - fewer fragile manual steps
 
 Every iteration should improve both the result and the environment around the result.
+
+---
+
+## The “Author-Level” Habits
+
+The practices that separate a tuned setup from a toy.
 
 ### 1. Write operating rules into files
 
