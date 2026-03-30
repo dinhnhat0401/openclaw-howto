@@ -23,6 +23,8 @@ This guide is for diagnosing the failures that actually matter in production.
 
 ## 1. OpenClaw Won't Start
 
+> **Deep dive:** [01-getting-started](01-getting-started/) covers installation, config setup, and first-run validation.
+
 ### Check status first
 
 ```bash
@@ -59,6 +61,8 @@ lsof -i :3000
 
 ## 2. A Channel Is Connected but Behaving Wrong
 
+> **Deep dive:** [02-channels](02-channels/) covers channel setup, routing rules, and per-channel permissions.
+
 ### Symptoms
 
 - replies stop arriving
@@ -93,6 +97,8 @@ Always separate:
 ---
 
 ## 3. Cron Job Exists but Never Fires
+
+> **Deep dive:** [06-automation](06-automation/) covers cron syntax, scheduling patterns, and event-driven triggers.
 
 ### Check the obvious
 
@@ -133,6 +139,8 @@ Possible root causes:
 ---
 
 ## 4. Workflow Runs but Gives Bad Output
+
+> **Deep dive:** [08-workflows](08-workflows/) covers multi-step pipeline design, error handling, and workflow templates.
 
 This is one of the most common failures.
 
@@ -187,6 +195,8 @@ If gathered data is good but the summary/recommendation is bad, fix the prompt/c
 ---
 
 ## 5. Skill Failures
+
+> **Deep dive:** [04-skills](04-skills/) covers skill installation, custom skill creation, and skill chaining.
 
 ### Symptoms
 
@@ -256,6 +266,8 @@ If a skill works in `--dry-run` but fails in real execution, the problem is almo
 
 ## 7. Memory Problems
 
+> **Deep dive:** [03-memory](03-memory/) covers memory architecture, teaching strategies, and pruning best practices.
+
 ### Symptoms of bad memory
 
 - OpenClaw keeps repeating outdated assumptions
@@ -300,6 +312,8 @@ not only in conversational memory.
 
 ## 8. Browser or UI Automation Fails
 
+> **Deep dive:** [07-browser-automation](07-browser-automation/) covers headless/visible browser control, selectors, and screenshot workflows.
+
 ### Distinguish two classes
 
 #### Web/browser automation
@@ -335,6 +349,8 @@ Do not debug UI automation and app logic at the same time. First prove you can c
 
 ## 9. Integration Auth Expired
 
+> **Deep dive:** [05-integrations](05-integrations/) covers 50+ service connectors, auth setup, and health monitoring.
+
 ### Symptoms
 
 - workflow suddenly stops halfway
@@ -358,6 +374,8 @@ Add a lightweight weekly integration health check instead of discovering expired
 ---
 
 ## 10. Cost Spikes
+
+> **Deep dive:** [09-advanced-features](09-advanced-features/) covers model routing, cost optimization, and budget auto-actions.
 
 ### Typical causes
 
@@ -387,6 +405,8 @@ openclaw usage --projection
 ---
 
 ## 11. Operational Drift
+
+> **Deep dive:** [OPERATIONS.md](OPERATIONS.md) covers weekly/monthly review checklists and promotion/retirement rules for automations.
 
 A lot of “OpenClaw got worse” is really drift.
 
