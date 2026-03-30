@@ -437,5 +437,6 @@ That is how a good OpenClaw setup compounds instead of decays.
 1. **[Module 04 - Skills](../04-skills/)** — Use memory-aware skills that adapt to your stored preferences
 2. **[Module 09 - Advanced Features](../09-advanced-features/)** — Memory pruning, performance tuning, and cost optimization
 3. **[OPERATIONS.md](../OPERATIONS.md)** — Weekly memory audits and drift prevention routines
+4. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — Memory-driven workflow recipes and operator-level habits
 
 Memory acting stale or conflicting? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#6-memory-problems) for diagnosis and fix patterns.

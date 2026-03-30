@@ -495,5 +495,6 @@ openclaw task output <task-id>
 1. **[Module 07 - Browser Automation](../07-browser-automation/)** — Add web scraping and form-filling to your automated workflows
 2. **[Module 08 - Workflows](../08-workflows/)** — Orchestrate complex multi-step automations with branching and error handling
 3. **[OPERATIONS.md](../OPERATIONS.md)** — Ongoing maintenance routines to keep automations reliable
+4. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — Automation-heavy productivity patterns and operator playbooks
 
 Cron not firing? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#3-cron-job-exists-but-never-fires) for common causes and debug flows.
