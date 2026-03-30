@@ -244,6 +244,8 @@ Every week:
 - update stale memories
 - tighten prompts that keep failing
 
+See [The Weekly Review Checklist](#the-weekly-review-checklist) below for copy-paste CLI commands, or [OPERATIONS.md](OPERATIONS.md) for the full ops routine.
+
 ---
 
 ## Operator Mode: The Real Productivity Rules
@@ -501,19 +503,44 @@ A flaky morning briefing is a warning sign. Fix basics before scaling.
 
 ## The Weekly Review Checklist
 
-Run this every Friday or Sunday.
+Run this every Friday or Sunday. Takes 15--30 minutes.
 
-```markdown
-## Weekly OpenClaw Review
+### CLI checks
+
+```bash
+## Reliability
+openclaw status                                        # daemon health
+openclaw cron history --all --last 7d --status failed  # cron failures
+openclaw workflow history --last 7d --status failed    # workflow failures
+openclaw integration status --all                      # auth health
+
+## Memory drift
+openclaw memory stats
+openclaw memory search "project"                       # stale project context
+
+## Cost
+openclaw usage --this-week
+openclaw usage --by skill --sort cost
+```
+
+### Review questions
 
 - Which automation saved the most time?
 - Which automation created the most noise?
 - Which memory entries are stale or wrong?
-- Which workflows failed this week?
 - Which integrations need re-auth?
 - What cost spikes showed up?
 - What one improvement would most increase next week's output?
-```
+
+### Actions
+
+- [ ] Remove one noisy alert or notification
+- [ ] Improve one weak prompt or output format
+- [ ] Correct stale memories or preferences
+- [ ] Downgrade any cheap task still using a premium model
+- [ ] Decide one improvement for next week
+
+For the full monthly ops routine, see [OPERATIONS.md](OPERATIONS.md#monthly-review-3060-minutes).
 
 ---
 
