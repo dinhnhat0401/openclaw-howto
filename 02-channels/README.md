@@ -319,10 +319,12 @@ channels:
 
 | Level | Shell | Filesystem | Config | Cross-Channel |
 |---|---|---|---|---|
+| **Locked** | No | No | No | No |
 | **Restricted** | No | Read-only | No | No |
-| **Standard** | Sandboxed | Read-write | No | Yes |
-| **Trusted** | Full | Read-write | No | Yes |
-| **Admin** | Full | Read-write | Yes | Yes |
+| **Standard** | Sandboxed | Read-Write (scoped) | No | Yes |
+| **Trusted** | Full | Read-Write | No | Yes |
+| **Admin** | Full | Read-Write | Yes | Yes |
+| **Custom** | Configurable | Configurable | Configurable | Configurable |
 
 ---
 

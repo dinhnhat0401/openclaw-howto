@@ -167,9 +167,9 @@ Use these quizzes to check your understanding before moving to the next level. S
 | 3 | Name four messaging channels OpenClaw supports. | WhatsApp, Telegram, Slack, Discord (also: iMessage, Email, Signal, Teams, Matrix, IRC, etc.) |
 | 4 | What is the purpose of the Control UI? | Web dashboard for monitoring, configuration, and direct interaction with OpenClaw |
 | 5 | How do you check OpenClaw's running status from the CLI? | `openclaw status` |
-| 6 | What are the three layers of OpenClaw's memory stack? | Core memory (profile + persona), conversation memory, archival memory |
+| 6 | What are the four layers of OpenClaw's memory stack? | Working Memory (current conversation), Short-Term Memory (last 7 days), Long-Term Memory (persistent facts), Episodic Memory (timestamped events) |
 | 7 | How do you explicitly teach OpenClaw a fact about yourself? | `openclaw memory add "fact"` or tell it directly in conversation with "Remember that..." |
-| 8 | What is the default permission mode after onboarding? | `ask` mode (OpenClaw asks before executing actions) |
+| 8 | What is the default permission mode after onboarding? | Standard mode (sandboxed shell, scoped read-write filesystem) |
 | 9 | How do you view all installed channels and their connection status? | `openclaw channel list` |
 | 10 | What happens to memory when you restart OpenClaw? | It persists. Memory is stored on disk and survives restarts. |
 
@@ -201,8 +201,8 @@ Use these quizzes to check your understanding before moving to the next level. S
 | 3 | What are the four workflow trigger types? | `cron`, `webhook`, `keyword`, `calendar_event` (also `file_watcher` and `condition`) |
 | 4 | How does a workflow handle a failed step? | Via the `on_error` field: `skip`, `abort`, `retry`, or `fallback` |
 | 5 | What is model routing and why use it? | Directing different tasks to different LLM models based on complexity, speed, or cost requirements |
-| 6 | Name the three permission modes in order of restrictiveness. | `locked` (no actions), `ask` (confirm each action), `auto` (execute without confirmation) |
-| 7 | How do you set a monthly cost budget for OpenClaw? | `openclaw config set cost.monthly_budget <amount>` and enable cost monitoring |
+| 6 | Name the six permission modes in order of restrictiveness. | Locked (no access), Restricted (read-only), Standard (sandboxed), Trusted (full shell), Admin (full + config), Custom (configurable) |
+| 7 | How do you set a monthly cost budget for OpenClaw? | `openclaw config set billing.monthly_budget <amount>` and enable cost monitoring |
 | 8 | What is a network policy and when would you use one? | A rule restricting which domains/APIs OpenClaw can access. Used for security hardening in production. |
 | 9 | How do you enable local model fallback when the API is unavailable? | Configure a local model (e.g., Ollama) as a fallback provider in `config.yaml` |
 | 10 | What command exports a workflow as a shareable template? | `openclaw workflow export <workflow-name>` |
@@ -370,7 +370,7 @@ Each level has a set of objective, verifiable criteria. All items marked **Requi
 | 3 | Workflow includes error handling (on_error) | Required | `workflow.yaml` contains `on_error` directives |
 | 4 | Model routing configured with 2+ models | Required | `openclaw config get model.routing` shows routing rules |
 | 5 | Permission mode configured appropriately | Required | Can explain current permission mode and why it was chosen |
-| 6 | Cost monitoring enabled with monthly budget | Required | `openclaw config get cost.monthly_budget` returns a value |
+| 6 | Cost monitoring enabled with monthly budget | Required | `openclaw config get billing.monthly_budget` returns a value |
 | 7 | Network policy defined | Required | `openclaw config get security.network_policy` returns rules |
 | 8 | Capstone project: end-to-end autonomous workflow | Required | See [Capstone Exercise](#exercise-m-3-capstone-autonomous-pr-pipeline) |
 | 9 | Workflow shared as reusable template | Bonus | `openclaw workflow export` completed |

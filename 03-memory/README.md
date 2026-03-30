@@ -1,4 +1,4 @@
-# Module 03: Memory & Context
+# Module 03: Memory
 
 > **Level:** Beginner | **Time:** 45 minutes | **Prerequisites:** [Module 01 - Getting Started](../01-getting-started/)
 
