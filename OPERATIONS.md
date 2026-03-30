@@ -246,6 +246,9 @@ A deleted automation is often a quality improvement.
 
 - [POWER_USER_PLAYBOOK.md](POWER_USER_PLAYBOOK.md)
 - [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
+- [CATALOG.md](CATALOG.md)
+- [LEARNING-ROADMAP.md](LEARNING-ROADMAP.md)
 - [03-memory/README.md](03-memory/)
 - [06-automation/README.md](06-automation/)
 - [08-workflows/README.md](08-workflows/)

@@ -417,16 +417,77 @@ When the system is messy, do not randomly poke it.
 
 ### Recovery sequence
 
-1. verify daemon health
-2. validate config
-3. test LLM
-4. test channels
-5. test integrations
-6. run the failing cron/workflow manually
-7. inspect memory for stale context
-8. only then edit prompts/workflows
+Work through each step in order. Do not skip ahead -- each layer depends on the ones above it.
 
-This order matters because it avoids “fixing” the wrong layer.
+#### Step 1 — Verify daemon health
+
+```bash
+openclaw status
+openclaw logs --level error
+```
+
+If the daemon is not running, start it with `openclaw start` and check logs for startup errors.
+
+#### Step 2 — Validate config
+
+```bash
+openclaw config validate
+```
+
+If validation fails, inspect recent config edits. Use `openclaw config reset` only as a last resort (it preserves memory but resets all settings to defaults).
+
+#### Step 3 — Test LLM connectivity
+
+```bash
+openclaw test llm
+```
+
+If this fails, check your API key (`openclaw config get llm.api_key`), network connectivity, and provider status pages.
+
+#### Step 4 — Test channels
+
+```bash
+openclaw channel list
+openclaw channel test <name>
+```
+
+Re-pair any channel that fails with `openclaw channel pair <name>`.
+
+#### Step 5 — Test integrations
+
+```bash
+openclaw integration status --all
+openclaw integration test <name>    # for any that report unhealthy
+```
+
+Re-auth failing integrations with `openclaw integration config <name>`.
+
+#### Step 6 — Run the failing cron/workflow manually
+
+```bash
+openclaw cron run <name> --now      # for cron jobs
+openclaw workflow run <name> --verbose --dry-run   # for workflows
+```
+
+If manual execution works but scheduled execution does not, the problem is in scheduling, timezone, or environment -- not in the task itself.
+
+#### Step 7 — Inspect memory for stale context
+
+```bash
+openclaw memory stats
+openclaw memory search “<topic>”
+openclaw memory prune --older-than 90d
+```
+
+Look for contradictory or outdated entries that could confuse output.
+
+#### Step 8 — Only then edit prompts/workflows
+
+If steps 1--7 all pass, the problem is in your prompt, workflow logic, or output format. Now it is safe to edit those.
+
+### Why this order matters
+
+Each step rules out a layer of the stack. Editing a prompt when the real problem is expired auth wastes time and introduces new variables. Start at the bottom, work up.
 
 ---
 
@@ -451,6 +512,9 @@ Fix the system before blaming the model.
 
 - [POWER_USER_PLAYBOOK.md](POWER_USER_PLAYBOOK.md)
 - [OPERATIONS.md](OPERATIONS.md)
+- [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
+- [CATALOG.md](CATALOG.md)
+- [LEARNING-ROADMAP.md](LEARNING-ROADMAP.md)
 - [03-memory/README.md](03-memory/)
 - [04-skills/README.md](04-skills/)
 - [06-automation/README.md](06-automation/)
