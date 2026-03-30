@@ -700,3 +700,13 @@ openclaw config set workflows.failure_target "#workflow-alerts"
 - Always include error handling and fallbacks
 - Test with `--dry-run` and `--mock-trigger` before deploying
 - Monitor workflows and set up failure alerts
+
+---
+
+## What's Next
+
+1. **[Module 09 - Advanced Features](../09-advanced-features/)** — Model routing, error handling patterns, and performance optimization for workflows
+2. **[OPERATIONS.md](../OPERATIONS.md)** — Weekly and monthly review routines to keep workflows healthy
+3. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — Real-world workflow recipes from power users
+
+Workflow output wrong? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#4-workflow-runs-but-gives-bad-output) for the four root causes and fix strategies.

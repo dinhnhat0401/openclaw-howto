@@ -487,3 +487,13 @@ openclaw task output <task-id>
 - Background tasks handle long-running work without blocking your conversation
 - Test everything with `--now` before deploying to a schedule
 - Keep automations idempotent, cost-conscious, and well-monitored
+
+---
+
+## What's Next
+
+1. **[Module 07 - Browser Automation](../07-browser-automation/)** — Add web scraping and form-filling to your automated workflows
+2. **[Module 08 - Workflows](../08-workflows/)** — Orchestrate complex multi-step automations with branching and error handling
+3. **[OPERATIONS.md](../OPERATIONS.md)** — Ongoing maintenance routines to keep automations reliable
+
+Cron not firing? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#3-cron-job-exists-but-never-fires) for common causes and debug flows.

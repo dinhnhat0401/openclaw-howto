@@ -429,3 +429,13 @@ That is how a good OpenClaw setup compounds instead of decays.
 - Audit and prune monthly
 - Define custom shortcuts ("ship it", "standup", "triage") for common workflows
 - The longer you use OpenClaw, the better it gets — this is the compound effect
+
+---
+
+## What's Next
+
+1. **[Module 04 - Skills](../04-skills/)** — Use memory-aware skills that adapt to your stored preferences
+2. **[Module 09 - Advanced Features](../09-advanced-features/)** — Memory pruning, performance tuning, and cost optimization
+3. **[OPERATIONS.md](../OPERATIONS.md)** — Weekly memory audits and drift prevention routines
+
+Memory acting stale or conflicting? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#6-memory-problems) for diagnosis and fix patterns.

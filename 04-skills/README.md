@@ -463,3 +463,13 @@ openclaw skill install https://github.com/you/my-openclaw-skill.git
 - Custom skills are defined in `skill.yaml` with triggers, config, and steps
 - Skill chaining lets you build autonomous pipelines (email → tasks → calendar → replies)
 - Scope hierarchy lets you override skills per-project
+
+---
+
+## What's Next
+
+1. **[Module 05 - Integrations](../05-integrations/)** — Connect skills to external services for real-world actions
+2. **[Module 08 - Workflows](../08-workflows/)** — Chain multiple skills into autonomous multi-step pipelines
+3. **[Module 06 - Automation](../06-automation/)** — Schedule skills to run on cron or fire on events
+
+Skills misbehaving? See the [Troubleshooting Guide](../TROUBLESHOOTING.md) for debugging strategies.

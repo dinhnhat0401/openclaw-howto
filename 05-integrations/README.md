@@ -491,3 +491,13 @@ sequenceDiagram
 - Combine integrations with skills for powerful automation pipelines
 - Use `read_only` mode for sensitive integrations (finance, health)
 - Test and monitor integration health regularly
+
+---
+
+## What's Next
+
+1. **[Module 06 - Automation](../06-automation/)** — Trigger automations when integrations receive new data
+2. **[Module 08 - Workflows](../08-workflows/)** — Combine integrations into end-to-end autonomous pipelines
+3. **[Module 09 - Advanced Features](../09-advanced-features/)** — Security hardening and permission scoping for sensitive integrations
+
+Auth expired or integration broken? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#8-integration-auth-expired) for diagnosis steps.

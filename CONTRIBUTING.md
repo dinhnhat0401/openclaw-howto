@@ -45,7 +45,7 @@ If you are unsure whether your idea fits, open a [discussion](https://github.com
    ```
 3. **Create a branch** following the naming convention below.
 4. **Make your changes** following the writing standards and style guide.
-5. **Submit a pull request** against the `main` branch.
+5. **Submit a pull request** against the `trunk` branch.
 
 ---
 
@@ -251,7 +251,7 @@ The problem this solves or the gap it fills.
 
 1. A maintainer will review your PR within 5 business days.
 2. You may receive feedback requesting changes -- this is normal and collaborative.
-3. Once approved, a maintainer will merge your PR into `main`.
+3. Once approved, a maintainer will merge your PR into `trunk`.
 4. Significant contributions will be credited in the [CHANGELOG](CHANGELOG.md).
 
 ---

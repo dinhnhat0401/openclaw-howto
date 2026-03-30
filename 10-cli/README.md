@@ -267,3 +267,13 @@ openclaw --version
 - `--dry-run` and `--verbose` flags are your best friends for debugging
 - `openclaw test all` validates your entire setup in one command
 - File locations are predictable: everything lives under `~/.openclaw/`
+
+---
+
+## What's Next
+
+1. **[QUICK_REFERENCE.md](../QUICK_REFERENCE.md)** — Printable cheat sheet of the most-used commands
+2. **[CATALOG.md](../CATALOG.md)** — Full catalog of 95+ commands with examples
+3. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — CLI-driven workflows and productivity patterns
+
+Something not working? See the [Troubleshooting Guide](../TROUBLESHOOTING.md) for systematic diagnosis starting from `openclaw status`.

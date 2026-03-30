@@ -378,3 +378,13 @@ openclaw channel logs <name> --tail 50
 - Use multi-channel routing to automatically direct information
 - Set per-channel permissions — don't trust all channels equally
 - The right channel for the right task is the key insight
+
+---
+
+## What's Next
+
+1. **[Module 03 - Memory](../03-memory/)** — Teach OpenClaw your preferences so responses feel personal across all channels
+2. **[Module 04 - Skills](../04-skills/)** — Trigger skills from different channels for context-aware automation
+3. **[Module 06 - Automation](../06-automation/)** — Route automated outputs to the right channel with multi-channel cron jobs
+
+Having channel issues? See the [Troubleshooting Guide](../TROUBLESHOOTING.md) for channel-specific diagnostics.

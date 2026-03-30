@@ -631,3 +631,13 @@ jobs:
 - Set a monthly budget and auto-downgrade when approaching limits
 - Local models via Ollama provide a free, privacy-first fallback
 - Headless mode enables CI/CD integration
+
+---
+
+## What's Next
+
+1. **[Module 10 - CLI](../10-cli/)** — Master the command-line interface for every feature covered here
+2. **[OPERATIONS.md](../OPERATIONS.md)** — Put cost management and security audits into a regular routine
+3. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — See these advanced features applied in real production setups
+
+Costs spiking or config broken? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#9-cost-spikes) for diagnosis and high-ROI fixes.
