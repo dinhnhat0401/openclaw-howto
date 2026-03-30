@@ -506,6 +506,111 @@ steps:
       Follow-up: {{ extract_details.follow_up_date || 'None set' }}
 ```
 
+### Workflow 6: Inbox to Action
+
+Classify, summarize, draft, archive, and task-create -- the full inbox triage pipeline referenced in the [Power User Playbook](../POWER_USER_PLAYBOOK.md#workflow-d--inbox-to-action).
+
+```yaml
+name: inbox-to-action
+description: Triage inbox — classify, summarize, draft replies, archive noise, create tasks
+version: 1.0.0
+
+trigger:
+  type: cron
+  schedule: "*/30 8-20 * * 1-5"       # every 30 min during work hours, weekdays
+
+config:
+  max_emails: 30                       # process up to N unread emails per run
+  auto_archive: true                   # archive noise automatically
+  auto_send: false                     # draft only — never send without approval
+  urgent_labels: ["urgent", "action-required", "blocking"]
+
+steps:
+  - name: fetch_unread
+    skill: email-manager
+    action: list_unread
+    limit: "{{ config.max_emails }}"
+
+  - name: classify
+    tool: llm
+    model: claude-haiku-4-5            # fast + cheap for classification
+    prompt: |
+      Classify each email into exactly one category:
+
+      - **urgent**: needs a reply or action within hours
+      - **action_required**: needs a reply or action this week
+      - **informational**: useful to read but no action needed
+      - **noise**: newsletters, notifications, CC-only threads with no action for me
+
+      Emails:
+      {{ fetch_unread.output }}
+
+      Return a JSON array:
+      [{"id": "...", "from": "...", "subject": "...", "category": "...", "one_line_summary": "..."}]
+
+  - name: summarize_urgent
+    tool: llm
+    condition: "{{ classify.urgent | length > 0 }}"
+    prompt: |
+      Summarize these urgent emails. For each, include:
+      - From, subject, one-sentence summary
+      - What action is needed and by when
+      - Suggested reply approach (2-3 words)
+
+      {{ classify.urgent }}
+
+  - name: draft_replies
+    tool: llm
+    condition: "{{ classify.urgent | length > 0 or classify.action_required | length > 0 }}"
+    prompt: |
+      Draft concise replies for each of these emails.
+      Tone: professional, direct, helpful.
+      Keep each draft under 100 words unless the topic demands more.
+
+      Urgent:
+      {{ classify.urgent }}
+
+      Action required:
+      {{ classify.action_required }}
+
+      For each email return:
+      - email_id
+      - draft_reply
+
+  - name: queue_drafts
+    skill: email-manager
+    condition: "{{ draft_replies.output }}"
+    action: draft_batch
+    drafts: "{{ draft_replies.output }}"
+    # Drafts only — user reviews and sends manually
+
+  - name: archive_noise
+    skill: email-manager
+    condition: "{{ config.auto_archive and classify.noise | length > 0 }}"
+    action: archive_batch
+    ids: "{{ classify.noise | map('id') }}"
+
+  - name: create_tasks
+    skill: task-manager
+    condition: "{{ classify.action_required | length > 0 }}"
+    action: create_batch
+    tasks: |
+      {{ classify.action_required | map('one_line_summary') }}
+    source: "email"
+
+  - name: notify
+    tool: channel
+    condition: "{{ classify.urgent | length > 0 }}"
+    target: telegram
+    message: |
+      **Inbox Triage** — {{ fetch_unread.count }} emails processed
+      {{ classify.urgent | length }} urgent · {{ classify.action_required | length }} action · {{ classify.noise | length }} archived
+
+      {{ summarize_urgent.output }}
+
+      Drafts queued — review in your email client.
+```
+
 ---
 
 ## Workflow Design Patterns
@@ -695,7 +800,7 @@ openclaw config set workflows.failure_target "#workflow-alerts"
 ## Key Takeaways
 
 - Workflows orchestrate skills, integrations, and tools into autonomous pipelines
-- Start with the high-value workflows: PR pipeline, meeting autopilot, inbox-to-action
+- Start with the high-value workflows: PR pipeline (Workflow 1), meeting autopilot (Workflow 2), inbox-to-action (Workflow 6)
 - Use parallel execution for independent data gathering
 - Always include error handling and fallbacks
 - Test with `--dry-run` and `--mock-trigger` before deploying

@@ -221,7 +221,7 @@ Pipeline:
 5. submit APPROVE / REQUEST_CHANGES / COMMENT
 6. notify only if attention is needed
 
-This turns passive review backlog into active flow.
+This turns passive review backlog into active flow. See [Workflow 1: Autonomous PR Pipeline](08-workflows/#workflow-1-autonomous-pr-pipeline) for the full YAML template.
 
 #### Workflow B — Meeting Autopilot
 
@@ -236,7 +236,7 @@ Pipeline:
 5. follow-up draft
 6. task creation
 
-This converts meetings from memory drains into structured outputs.
+This converts meetings from memory drains into structured outputs. See [Workflow 2: Meeting Autopilot](08-workflows/#workflow-2-meeting-autopilot) for the full YAML template.
 
 #### Workflow C — Research to Decision
 
@@ -250,6 +250,8 @@ Pipeline:
 4. produce recommendation + risks
 5. save/share decision doc
 
+For the production-ready YAML template, see [Workflow 3: Research-to-Decision Pipeline](08-workflows/#workflow-3-research-to-decision-pipeline) in Module 08.
+
 #### Workflow D — Inbox to Action
 
 **Best for:** overloaded operators
@@ -261,6 +263,8 @@ Pipeline:
 3. draft replies for action-required
 4. archive noise
 5. create tasks from real obligations
+
+For the production-ready YAML template, see [Workflow 6: Inbox to Action](08-workflows/#workflow-6-inbox-to-action) in Module 08.
 
 ### Layer 5: Weekly Maintenance
 
