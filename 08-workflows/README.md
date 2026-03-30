@@ -612,6 +612,49 @@ steps:
     abort_target: "#incidents"
 ```
 
+### Resilience Patterns
+
+Error handling is where production workflows stop being demos.
+
+#### When to use each strategy
+
+| Strategy | Use it when | Example |
+|---|---|---|
+| `skip` | the step enriches output but is not required for usefulness | weather failed, but the morning briefing should still go out |
+| `abort` | continuing would create a misleading or dangerous result | PR diff failed to load, so code review must stop |
+| `retry` | the failure is probably transient | HTTP timeout, flaky API, temporary rate limit |
+| `fallback` | a degraded path is still useful | browser scrape failed, fall back to notify-only mode |
+
+#### Design for partial success
+
+A strong workflow distinguishes between:
+
+- **core truth sources** — if these fail, abort
+- **optional enrichments** — if these fail, skip or fallback
+- **delivery paths** — if the primary path fails, try a backup notification route
+
+#### Avoid silent failure
+
+A workflow that fails quietly for three days is worse than one that fails loudly once.
+
+Good practices:
+
+- send failure alerts for critical workflows
+- keep workflow outputs scannable
+- review recent history regularly
+- add explicit notify/fallback steps when human attention is needed
+
+#### Start with notify-first automation
+
+For new workflows, use this maturity ladder:
+
+1. notify only
+2. draft
+3. execute with approval
+4. full autonomy
+
+That sequence dramatically reduces the chance of shipping a clever but unsafe workflow.
+
 ---
 
 ## Testing Workflows

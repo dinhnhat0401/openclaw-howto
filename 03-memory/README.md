@@ -323,6 +323,104 @@ These become persistent behaviors that OpenClaw executes automatically.
 
 ---
 
+## Memory Strategy for Power Users
+
+Once OpenClaw is part of your real daily workflow, the challenge changes.
+The problem is no longer “how do I store memory?” It becomes “how do I keep memory useful?”
+
+### What belongs in long-term memory
+
+Good long-term memory candidates:
+
+- stable preferences that affect output quality
+- role/team context that changes infrequently
+- project conventions that keep recurring
+- personal shorthand and trigger phrases
+- recurring people/relationships that affect prioritization
+
+Examples:
+
+- "Use terse replies with no fluff."
+- "Review PRs with inline comments on exact lines."
+- "When I say ship it, run tests + build + push to staging."
+- "My team's sprint ends on Fridays."
+
+### What does **not** belong there
+
+Avoid storing:
+
+- secrets, passwords, API keys, tokens
+- one-off details that expire quickly
+- temporary meeting logistics
+- transient project state that belongs in notes/tasks instead
+- duplicate instructions already captured in config or workspace files
+
+### Signs your memory has become unhealthy
+
+- OpenClaw keeps repeating outdated assumptions
+- different projects bleed into each other
+- you correct the same preference more than once
+- outputs get longer but less accurate
+- the assistant feels more "busy" than helpful
+
+### The practical split: files vs memory
+
+A good rule:
+
+- Put **stable operating instructions** in workspace files (`USER.md`, `TOOLS.md`, `AGENTS.md`)
+- Put **durable personalized facts/preferences** in memory
+- Put **temporary task/project details** in notes or project docs
+
+If something must be obeyed consistently, it usually deserves a file, not just a conversational memory.
+
+### Memory audit routine
+
+Do this monthly:
+
+1. Ask: "What do you remember about me / this project?"
+2. Search memory for key topics
+3. Remove stale projects and old assumptions
+4. Restate the current canonical preferences clearly
+
+### Memory conflicts
+
+Conflicts happen when old facts and new facts both exist.
+
+Examples:
+
+- old manager vs new manager
+- old timezone vs new timezone
+- old preferred language vs new preferred language
+
+Fix conflicts explicitly and immediately. Do not assume the model will infer the replacement correctly.
+
+### Memory and context-window tradeoffs
+
+More memory is not always better.
+
+When memory grows, retrieval quality matters more than total volume.
+A compact set of high-signal memories will usually outperform a huge pile of half-relevant facts.
+
+The goal is not maximum stored context. The goal is **maximum useful retrieved context**.
+
+### Power-user habit
+
+Any time you catch yourself saying:
+
+- "I always have to remind it..."
+- "It keeps forgetting that..."
+- "I wish it would stop doing..."
+
+stop and decide whether the fix belongs in:
+
+- a memory correction
+- a workspace file
+- an automation/workflow definition
+
+That is how a good OpenClaw setup compounds instead of decays.
+
+---
+
 ## Key Takeaways
 
 - Memory is OpenClaw's superpower — it's what makes it feel like a colleague, not a chatbot

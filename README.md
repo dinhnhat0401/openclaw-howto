@@ -31,6 +31,7 @@
 <a href="#-quick-start"><img src="https://img.shields.io/badge/Quick_Start-5_min-2ECC71?style=flat-square" /></a>
 <a href="#-learning-path"><img src="https://img.shields.io/badge/Learning_Path-3_Levels-9B59B6?style=flat-square" /></a>
 <a href="#-10-modules"><img src="https://img.shields.io/badge/Modules-10-3498DB?style=flat-square" /></a>
+<a href="POWER_USER_PLAYBOOK.md"><img src="https://img.shields.io/badge/Power_User-Playbook-111827?style=flat-square" /></a>
 <a href="QUICK_REFERENCE.md"><img src="https://img.shields.io/badge/Cheat_Sheet-Reference-E74C3C?style=flat-square" /></a>
 <a href="CATALOG.md"><img src="https://img.shields.io/badge/Full_Catalog-95+_commands-F39C12?style=flat-square" /></a>
 <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-Welcome-brightgreen?style=flat-square" /></a>
@@ -404,6 +405,10 @@ mindmap
 
 | | Document | What's Inside |
 |:---:|---|---|
+| **[POWER_USER_PLAYBOOK.md](POWER_USER_PLAYBOOK.md)** | Power User Playbook | The fastest path to a high-output OpenClaw setup: workspace files, memory, automations, workflows, and weekly maintenance |
+| **[OPENCLAW_PRODUCTIVITY_STACK.md](OPENCLAW_PRODUCTIVITY_STACK.md)** | Productivity Stack | One-page blueprint for maximizing work output |
+| **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** | Troubleshooting | Deep debugging for channels, cron, workflows, memory, auth, browser automation, and cost spikes |
+| **[OPERATIONS.md](OPERATIONS.md)** | Operations Guide | Weekly/monthly maintenance, reliability habits, backup strategy, and scaling patterns |
 | **[LEARNING-ROADMAP.md](LEARNING-ROADMAP.md)** | Learning Roadmap | 3-level progression, quizzes, 5-week timeline |
 | **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** | Quick Reference | Cheat sheets, lookup tables, one-pagers |
 | **[CATALOG.md](CATALOG.md)** | Feature Catalog | 95+ commands, 50+ integrations, all skills |

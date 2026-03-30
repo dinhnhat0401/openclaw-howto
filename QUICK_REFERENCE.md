@@ -1,6 +1,12 @@
 # OpenClaw Quick Reference
 
 > Fast-lookup cheat sheet. For tutorials, see the [module guides](README.md#learning-path).
+>
+> Want the high-output version instead of the feature tour? Start with:
+> - [POWER_USER_PLAYBOOK.md](POWER_USER_PLAYBOOK.md)
+> - [OPENCLAW_PRODUCTIVITY_STACK.md](OPENCLAW_PRODUCTIVITY_STACK.md)
+> - [OPERATIONS.md](OPERATIONS.md)
+> - [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
 ---
 
