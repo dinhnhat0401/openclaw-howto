@@ -355,6 +355,8 @@ You have OpenClaw installed and running. Now:
 2. **[Module 03 - Memory](../03-memory/)** — Teach OpenClaw about you for personalized responses
 3. **[Module 04 - Skills](../04-skills/)** — Install capabilities that match your workflow
 
+Hit a wall during setup? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#1-openclaw-wont-start) for startup diagnostics, config validation, and port conflicts.
+
 ---
 
 ## Key Takeaways
