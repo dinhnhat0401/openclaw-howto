@@ -357,6 +357,34 @@ mindmap
 
 <br/>
 
+### Use Case → Module Map
+
+| Use Case | Start Here | Then Add | Key Skill / Template |
+|---|---|---|---|
+| **Email triage & drafting** | [05 Integrations](05-integrations/) | [04 Skills](04-skills/) | `email-manager` skill, Gmail integration |
+| **Meeting summaries** | [04 Skills](04-skills/) | [08 Workflows](08-workflows/) | `meeting-summarizer` skill, Meeting Autopilot workflow |
+| **Follow-up automation** | [04 Skills](04-skills/) | [06 Automation](06-automation/) | `follow-up-tracker` skill, cron trigger |
+| **Multi-channel routing** | [02 Channels](02-channels/) | — | Channel priority rules |
+| **PR review pipeline** | [04 Skills](04-skills/) | [08 Workflows](08-workflows/) | `github-pr-reviewer` skill, PR Pipeline workflow |
+| **Standup generation** | [06 Automation](06-automation/) | [04 Skills](04-skills/) | `standup-reporter` skill, 7:30 AM cron |
+| **CI/CD monitoring** | [05 Integrations](05-integrations/) | [04 Skills](04-skills/) | `ci-monitor` skill, GitHub integration |
+| **Code review** | [04 Skills](04-skills/) | [08 Workflows](08-workflows/) | `github-pr-reviewer` skill |
+| **Calendar management** | [05 Integrations](05-integrations/) | [04 Skills](04-skills/) | `calendar-sync` skill |
+| **Task synchronization** | [05 Integrations](05-integrations/) | [04 Skills](04-skills/) | `task-manager` skill, Todoist/Things integration |
+| **Research & analysis** | [07 Browser](07-browser-automation/) | [04 Skills](04-skills/) | `research-agent` skill |
+| **Decision documents** | [08 Workflows](08-workflows/) | [07 Browser](07-browser-automation/) | Research-to-Decision Pipeline |
+| **File organization** | [06 Automation](06-automation/) | — | File watcher triggers |
+| **Expense tracking** | [04 Skills](04-skills/) | [07 Browser](07-browser-automation/) | `expense-tracker` skill, receipt OCR |
+| **Flight check-in** | [07 Browser](07-browser-automation/) | — | Form-filling automation |
+| **Incident response** | [08 Workflows](08-workflows/) | [06 Automation](06-automation/) | Incident Response workflow template |
+| **Smart home control** | [05 Integrations](05-integrations/) | — | Hue, Home Assistant, HomeKit |
+| **Health tracking** | [05 Integrations](05-integrations/) | — | Apple Health (read-only) |
+| **Personal CRM** | [03 Memory](03-memory/) | [04 Skills](04-skills/) | Memory system + custom skills |
+
+> **Tip:** All use cases assume [01 Getting Started](01-getting-started/) is complete. See the [Learning Roadmap](LEARNING-ROADMAP.md#by-goal) for full learning paths.
+
+<br/>
+
 ---
 
 <br/>
