@@ -640,6 +640,6 @@ jobs:
 2. **[OPERATIONS.md](../OPERATIONS.md)** — Put cost management and security audits into a regular routine
 3. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — See these advanced features applied in real production setups
 
-For a full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
+For a quick command cheat sheet, see **[QUICK_REFERENCE.md](../QUICK_REFERENCE.md)**. For the full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
 
 Costs spiking or config broken? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#10-cost-spikes) for diagnosis and high-ROI fixes.
