@@ -221,6 +221,72 @@ At minimum, preserve:
 
 Even if OpenClaw is easy to reinstall, the value is in the tuned system around it.
 
+### Backup commands
+
+```bash
+# Create a dated backup directory
+BACKUP_DIR=~/openclaw-backup-$(date +%Y%m%d)
+mkdir -p "$BACKUP_DIR"
+
+# Config and workspace files
+cp ~/.openclaw/config.yaml "$BACKUP_DIR/"
+cp ~/.openclaw/.env "$BACKUP_DIR/"
+cp ~/.openclaw/USER.md "$BACKUP_DIR/" 2>/dev/null
+cp ~/.openclaw/TOOLS.md "$BACKUP_DIR/" 2>/dev/null
+cp ~/.openclaw/AGENTS.md "$BACKUP_DIR/" 2>/dev/null
+cp ~/.openclaw/SOUL.md "$BACKUP_DIR/" 2>/dev/null
+cp ~/.openclaw/HEARTBEAT.md "$BACKUP_DIR/" 2>/dev/null
+
+# Memory
+openclaw memory export > "$BACKUP_DIR/memory.json"
+
+# Custom skills and workflows
+cp -r ~/.openclaw/skills/ "$BACKUP_DIR/skills/" 2>/dev/null
+cp -r ~/.openclaw/workflows/ "$BACKUP_DIR/workflows/" 2>/dev/null
+
+# Cron definitions
+openclaw cron list --json > "$BACKUP_DIR/crons.json"
+```
+
+### Restore procedure
+
+Work through each step in order. Restore config and workspace files first, then memory, then skills and workflows.
+
+```bash
+# 1. Restore config (stop daemon first)
+openclaw stop
+cp "$BACKUP_DIR/config.yaml" ~/.openclaw/config.yaml
+cp "$BACKUP_DIR/.env" ~/.openclaw/.env
+
+# 2. Validate config before restarting
+openclaw config validate
+
+# 3. Restore workspace files
+cp "$BACKUP_DIR/USER.md" ~/.openclaw/ 2>/dev/null
+cp "$BACKUP_DIR/TOOLS.md" ~/.openclaw/ 2>/dev/null
+cp "$BACKUP_DIR/AGENTS.md" ~/.openclaw/ 2>/dev/null
+cp "$BACKUP_DIR/SOUL.md" ~/.openclaw/ 2>/dev/null
+cp "$BACKUP_DIR/HEARTBEAT.md" ~/.openclaw/ 2>/dev/null
+
+# 4. Restart and verify
+openclaw start
+openclaw status
+
+# 5. Restore memory
+openclaw memory import < "$BACKUP_DIR/memory.json"
+openclaw memory stats                         # verify count matches
+
+# 6. Restore custom skills and workflows
+cp -r "$BACKUP_DIR/skills/"* ~/.openclaw/skills/ 2>/dev/null
+cp -r "$BACKUP_DIR/workflows/"* ~/.openclaw/workflows/ 2>/dev/null
+
+# 7. Re-auth integrations (tokens are not portable)
+openclaw integration status --all
+openclaw integration test <name>              # for any showing unhealthy
+```
+
+> **Note:** Integration tokens and OAuth sessions cannot be backed up -- they must be re-authenticated on the new machine. Plan for this during migration.
+
 ---
 
 ## Multi-Machine Reality
