@@ -274,7 +274,8 @@ openclaw --version
 
 1. **[QUICK_REFERENCE.md](../QUICK_REFERENCE.md)** — Printable cheat sheet of the most-used commands
 2. **[CATALOG.md](../CATALOG.md)** — Full catalog of 95+ commands with examples
-3. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — CLI-driven workflows and productivity patterns
-4. **[OPERATIONS.md](../OPERATIONS.md)** — Weekly and monthly maintenance routines using the CLI
+3. **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)** — Guided learning path through all modules
+4. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — CLI-driven workflows and productivity patterns
+5. **[OPERATIONS.md](../OPERATIONS.md)** — Weekly and monthly maintenance routines using the CLI
 
 Something not working? See the [Troubleshooting Guide](../TROUBLESHOOTING.md) for systematic diagnosis starting from `openclaw status`.

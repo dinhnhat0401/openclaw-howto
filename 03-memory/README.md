@@ -439,4 +439,6 @@ That is how a good OpenClaw setup compounds instead of decays.
 3. **[OPERATIONS.md](../OPERATIONS.md)** — Weekly memory audits and drift prevention routines
 4. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — Memory-driven workflow recipes and operator-level habits
 
+For a full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
+
 Memory acting stale or conflicting? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#6-memory-problems) for diagnosis and fix patterns.

@@ -497,4 +497,6 @@ openclaw task output <task-id>
 3. **[OPERATIONS.md](../OPERATIONS.md)** — Ongoing maintenance routines to keep automations reliable
 4. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — Automation-heavy productivity patterns and operator playbooks
 
+For a full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
+
 Cron not firing? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#3-cron-job-exists-but-never-fires) for common causes and debug flows.

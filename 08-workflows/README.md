@@ -709,4 +709,6 @@ openclaw config set workflows.failure_target "#workflow-alerts"
 2. **[OPERATIONS.md](../OPERATIONS.md)** — Weekly and monthly review routines to keep workflows healthy
 3. **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — Real-world workflow recipes from power users
 
+For a full command reference, see **[CATALOG.md](../CATALOG.md)**. For a guided path through all modules, see **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)**.
+
 Workflow output wrong? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#4-workflow-runs-but-gives-bad-output) for the four root causes and fix strategies.

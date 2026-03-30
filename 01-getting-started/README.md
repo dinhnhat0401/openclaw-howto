@@ -358,6 +358,8 @@ You have OpenClaw installed and running. Now:
 Once you're comfortable, explore the operational resources:
 
 - **[QUICK_REFERENCE.md](../QUICK_REFERENCE.md)** — Printable cheat sheet of the most-used commands
+- **[CATALOG.md](../CATALOG.md)** — Full catalog of 95+ commands with examples
+- **[LEARNING-ROADMAP.md](../LEARNING-ROADMAP.md)** — Guided learning path through all modules
 - **[OPERATIONS.md](../OPERATIONS.md)** — Weekly and monthly maintenance routines to keep your setup healthy
 - **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** — Real-world workflow recipes from experienced operators
 
