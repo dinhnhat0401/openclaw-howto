@@ -40,16 +40,31 @@ Keep what is useful. Delete what is ornamental.
 
 ### 2. Review failures
 
-Check:
-
-- cron history
-- workflow failures
-- channel errors
-- integration auth warnings
+```bash
+openclaw cron history --all --last 7d --status failed
+openclaw workflow history --last 7d --status failed
+openclaw channel status
+openclaw integration status --all
+openclaw logs --level error --since 7d --summary
+```
 
 A silent failure is worse than a noisy one because it creates false trust.
 
+If any failures appear, triage with:
+
+```bash
+openclaw cron history <name> --last 10       # inspect specific cron
+openclaw workflow run <name> --verbose --dry-run  # replay without side effects
+openclaw integration test <name>             # re-test failing integration
+```
+
 ### 3. Audit memory drift
+
+```bash
+openclaw memory stats
+openclaw memory search "project"             # look for stale project context
+openclaw memory search "preference"          # look for contradictory preferences
+```
 
 Look for:
 
@@ -58,7 +73,19 @@ Look for:
 - conflicting instructions
 - dead people/roles/relationships in context
 
+Prune what is outdated:
+
+```bash
+openclaw memory prune --older-than 90d       # remove old entries
+```
+
 ### 4. Review costs
+
+```bash
+openclaw usage --this-week
+openclaw usage --by skill --sort cost
+openclaw usage --by model
+```
 
 Look for:
 
@@ -83,13 +110,38 @@ This is the deeper cleanup.
 
 ### Monthly checklist
 
-- prune old memory
-- rotate or verify integration auth
-- archive or remove unused skills/workflows
-- check budget trends
-- review permission settings
-- back up key config and memory
-- inspect whether your workspace files still match reality
+```bash
+# 1. Prune old memory
+openclaw memory stats
+openclaw memory prune --older-than 90d
+
+# 2. Verify integration auth
+openclaw integration status --all
+openclaw integration test <name>             # for any showing warnings
+
+# 3. Archive or remove unused skills/workflows
+openclaw skill list
+openclaw usage --by skill --sort cost --last 30d
+openclaw skill disable <name>                # disable unused skills
+openclaw workflow list
+openclaw workflow history --last 30d --status never_run  # find dormant workflows
+
+# 4. Check budget trends
+openclaw usage --this-month
+openclaw usage --projection
+openclaw usage --by model
+
+# 5. Review permission settings
+openclaw config get permissions
+
+# 6. Back up key config and memory
+cp -r ~/.openclaw/config.yaml ~/.openclaw/config.yaml.bak
+openclaw memory export > ~/openclaw-memory-backup-$(date +%Y%m%d).json
+
+# 7. Inspect workspace files
+cat ~/.openclaw/USER.md                      # still accurate?
+cat ~/.openclaw/TOOLS.md                     # still match your tools?
+```
 
 ---
 
@@ -215,30 +267,36 @@ A deleted automation is often a quality improvement.
 
 ## Example Weekly Ops Checklist
 
-```markdown
-## Weekly OpenClaw Ops
+```bash
+## Weekly OpenClaw Ops — copy-paste commands
 
 ### Reliability
-- [ ] Check daemon health
-- [ ] Review cron history for failures
-- [ ] Review workflow failures/retries
-- [ ] Check integration auth health
+openclaw status                               # daemon health
+openclaw cron history --all --last 7d --status failed   # cron failures
+openclaw workflow history --last 7d --status failed     # workflow failures
+openclaw integration status --all             # auth health
 
 ### Quality
-- [ ] Remove one noisy alert
-- [ ] Improve one weak prompt/output format
-- [ ] Correct stale memories or preferences
+openclaw memory stats                         # memory drift
+openclaw memory search "project"              # stale project context
+openclaw logs --level warn --since 7d --summary  # recurring warnings
 
 ### Cost
-- [ ] Review top cost drivers
-- [ ] Downgrade any cheap task using a premium model
-- [ ] Reduce unnecessary polling frequency
+openclaw usage --this-week
+openclaw usage --by skill --sort cost
+openclaw usage --by model
+```
 
-### Output
+### Checklist (non-command items)
+
+- [ ] Remove one noisy alert or notification
+- [ ] Improve one weak prompt or output format
+- [ ] Correct stale memories or preferences
+- [ ] Downgrade any cheap task still using a premium model
+- [ ] Reduce unnecessary polling frequency
 - [ ] Identify the single biggest time-saver this week
 - [ ] Identify the single biggest friction point this week
 - [ ] Decide one improvement for next week
-```
 
 ---
 
