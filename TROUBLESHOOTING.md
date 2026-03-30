@@ -356,20 +356,71 @@ Do not debug UI automation and app logic at the same time. First prove you can c
 - workflow suddenly stops halfway
 - one integration breaks while others still work
 - “not authorized” / “forbidden” / “token expired” errors
+- cron output stops including data from one source (e.g., morning briefing suddenly has no calendar)
+- `openclaw integration status --all` shows one or more integrations as “unhealthy”
 
-### What to do
+### Diagnose
 
 ```bash
-openclaw integration list
+# 1. Check which integrations are healthy vs. unhealthy
+openclaw integration status --all
+
+# 2. Test the specific integration that you suspect
 openclaw integration test <name>
-openclaw logs --level error
+
+# 3. Look for auth-related errors in the log
+openclaw logs --level error --since 7d
 ```
 
-Then re-auth only the failing integration.
+### Common auth failure patterns
 
-### Recommendation
+| Integration | Typical Auth Type | Common Expiry Cause | Fix |
+|---|---|---|---|
+| GitHub | Personal access token (PAT) | Token expired or scopes revoked | Generate new PAT, run `openclaw integration config github` |
+| Gmail / Google Calendar | OAuth 2.0 refresh token | Refresh token revoked or app access removed in Google security settings | Re-run `openclaw integration config gmail` to re-authorize |
+| Slack | Bot + App tokens | Workspace admin rotated tokens or removed app | Reinstall app in Slack, update tokens in `.env` |
+| Notion | Internal integration token | Token regenerated in Notion settings | Copy new token to `.env`, restart daemon |
+| Todoist / Linear / Jira | API key | Key rotated or account plan changed | Regenerate key in service settings, update `.env` |
+| Spotify | OAuth 2.0 | Refresh token expired after 30 days of inactivity | Re-run `openclaw integration config spotify` |
 
-Add a lightweight weekly integration health check instead of discovering expired auth during an important workflow.
+### Debug flow
+
+1. **Run `openclaw integration test <name>`** — this tells you if the token is valid right now
+2. If the test fails with a 401/403, the token is expired or revoked — re-auth is required
+3. If the test passes but workflows still fail, the problem is **scope**, not auth — the token works but lacks permissions for the specific action (e.g., read-only token trying to write)
+4. If the test is intermittent (sometimes passes, sometimes fails), suspect **rate limiting** rather than auth — check `openclaw logs --level warn` for rate-limit headers
+
+### Fix patterns
+
+| Problem | Fix |
+|---|---|
+| Token expired | `openclaw integration config <name>` to re-authenticate |
+| Token works but wrong scopes | Regenerate token with correct scopes, then `openclaw integration config <name>` |
+| OAuth refresh token revoked | Re-authorize the OAuth flow from scratch |
+| Rate limited, not actually expired | Reduce polling frequency or batch API calls |
+| Multiple integrations expired at once | Likely a `.env` file issue — verify the file exists and is readable: `cat ~/.openclaw/.env` |
+
+### Proactive health check
+
+Do not discover expired auth during an important workflow. Add a weekly health check cron:
+
+```bash
+openclaw cron create \
+  --schedule “0 8 * * 1” \
+  --action “Run openclaw integration status --all. If any integration is unhealthy, send me a message listing which ones failed and what error they returned. If all are healthy, stay silent.”
+```
+
+This fires every Monday at 8 AM. You can also run it manually any time:
+
+```bash
+openclaw integration status --all
+```
+
+### Smell test
+
+If only **one** integration broke, it is almost always an expired token — just re-auth that one.
+
+If **multiple** integrations broke at the same time, check for a broader cause: `.env` file deleted or corrupted, config reset, or OpenClaw version upgrade that changed the auth format.
 
 ---
 
