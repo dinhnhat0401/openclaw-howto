@@ -509,6 +509,10 @@ If steps 1--7 all pass, the problem is in your prompt, workflow logic, or output
 
 Each step rules out a layer of the stack. Editing a prompt when the real problem is expired auth wastes time and introduces new variables. Start at the bottom, work up.
 
+### If recovery fails entirely
+
+If the system is beyond repair, restore from backup rather than debugging further. See [OPERATIONS.md — Backup Strategy](OPERATIONS.md#backup-strategy) for backup/restore commands, and [OPERATIONS.md — Machine Migration](OPERATIONS.md#machine-migration-checklist) if you are moving to a new machine.
+
 ---
 
 ## 13. The Most Common Reality

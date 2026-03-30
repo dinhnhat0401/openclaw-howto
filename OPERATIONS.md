@@ -293,19 +293,78 @@ openclaw integration test <name>              # for any showing unhealthy
 
 If you run OpenClaw across machines/devices, be deliberate.
 
-Keep synced:
+### What to sync vs. keep local
 
-- durable notes
-- operating rules
-- long-lived preferences
-
-Do **not** casually sync:
-
-- secrets
-- volatile session state
-- noisy UI cache/workspace state
+| Sync across machines | Keep local per machine |
+|---|---|
+| `USER.md`, `AGENTS.md`, `SOUL.md`, `TOOLS.md` | `.env` and API keys |
+| Memory export (`memory.json`) | OAuth tokens and session state |
+| Custom skill definitions (`~/.openclaw/skills/`) | Browser cookies and UI cache |
+| Workflow definitions (`~/.openclaw/workflows/`) | Port assignments and daemon PID |
+| Cron definitions (exported JSON) | Device-specific paths in `TOOLS.md` |
 
 For many users, a shared notes/knowledge layer plus a local execution layer is the sweet spot.
+
+### Recommended sync method
+
+Use a **git repo** or synced folder (iCloud Drive, Dropbox, Syncthing) for portable config. Do not sync the entire `~/.openclaw/` directory.
+
+```bash
+# Export the portable layer
+SYNC_DIR=~/openclaw-sync
+mkdir -p "$SYNC_DIR"
+
+cp ~/.openclaw/USER.md "$SYNC_DIR/"
+cp ~/.openclaw/AGENTS.md "$SYNC_DIR/" 2>/dev/null
+cp ~/.openclaw/SOUL.md "$SYNC_DIR/" 2>/dev/null
+cp -r ~/.openclaw/skills/ "$SYNC_DIR/skills/" 2>/dev/null
+cp -r ~/.openclaw/workflows/ "$SYNC_DIR/workflows/" 2>/dev/null
+openclaw memory export > "$SYNC_DIR/memory.json"
+openclaw cron list --json > "$SYNC_DIR/crons.json"
+```
+
+On the receiving machine, import after a fresh install:
+
+```bash
+SYNC_DIR=~/openclaw-sync
+
+cp "$SYNC_DIR/USER.md" ~/.openclaw/
+cp "$SYNC_DIR/AGENTS.md" ~/.openclaw/ 2>/dev/null
+cp "$SYNC_DIR/SOUL.md" ~/.openclaw/ 2>/dev/null
+cp -r "$SYNC_DIR/skills/"* ~/.openclaw/skills/ 2>/dev/null
+cp -r "$SYNC_DIR/workflows/"* ~/.openclaw/workflows/ 2>/dev/null
+openclaw memory import < "$SYNC_DIR/memory.json"
+```
+
+Then re-auth integrations and adjust `TOOLS.md` for the new machine's paths:
+
+```bash
+openclaw integration status --all
+openclaw integration config <name>    # for each that needs re-auth
+```
+
+### Machine migration checklist
+
+When moving to a new machine entirely:
+
+1. **On the old machine** — run the full [backup](#backup-strategy) procedure
+2. **On the new machine** — install OpenClaw (`brew install openclaw-cli && openclaw onboard`)
+3. **Restore** — follow the [restore procedure](#restore-procedure) from your backup
+4. **Re-authenticate** — integration tokens are not portable; re-auth each one
+5. **Update device-specific config** — edit `TOOLS.md` for new paths, SSH aliases, and device names
+6. **Test** — run `openclaw status`, then `openclaw cron run <name> --now` for your most important cron
+7. **Verify memory** — `openclaw memory stats` should show the same count as the old machine
+
+> **Note:** `TOOLS.md` often contains machine-specific paths (`/Users/alice/repos/` vs. `/home/alice/repos/`). Review it manually after migration rather than copying blindly.
+
+### Keeping two machines in sync long-term
+
+If you actively use OpenClaw on two machines (e.g., laptop and desktop):
+
+- Sync workspace files and skill/workflow definitions via git or a shared folder
+- **Do not** auto-sync memory — instead, export/import periodically and resolve conflicts manually
+- Keep cron schedules identical or intentionally different (e.g., morning briefing only on the machine you use first)
+- Run `openclaw integration status --all` on both machines weekly to catch expired auth early
 
 ---
 
