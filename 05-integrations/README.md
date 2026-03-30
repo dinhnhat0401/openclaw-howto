@@ -500,4 +500,6 @@ sequenceDiagram
 2. **[Module 08 - Workflows](../08-workflows/)** — Combine integrations into end-to-end autonomous pipelines
 3. **[Module 09 - Advanced Features](../09-advanced-features/)** — Security hardening and permission scoping for sensitive integrations
 
+For integration health monitoring routines, see **[OPERATIONS.md](../OPERATIONS.md)**. For production integration patterns, see **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)**.
+
 Auth expired or integration broken? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#8-integration-auth-expired) for diagnosis steps.

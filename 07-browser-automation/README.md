@@ -373,4 +373,6 @@ openclaw config set permissions.browser.viewport.height 1080
 2. **[Module 06 - Automation](../06-automation/)** — Schedule browser tasks with cron or trigger them from events
 3. **[Module 09 - Advanced Features](../09-advanced-features/)** — Domain restrictions, security hardening, and permission modes
 
+For browser automation recipes and scraping patterns, see **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)**. For routine browser health checks, see **[OPERATIONS.md](../OPERATIONS.md)**.
+
 Browser automation failing? See the [Troubleshooting Guide](../TROUBLESHOOTING.md#7-browser-or-ui-automation-fails) for permission and selector debugging.

@@ -472,4 +472,6 @@ openclaw skill install https://github.com/you/my-openclaw-skill.git
 2. **[Module 08 - Workflows](../08-workflows/)** — Chain multiple skills into autonomous multi-step pipelines
 3. **[Module 06 - Automation](../06-automation/)** — Schedule skills to run on cron or fire on events
 
+For skill chaining recipes and productivity patterns, see **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)**. For routine skill audits and cleanup, see **[OPERATIONS.md](../OPERATIONS.md)**.
+
 Skills misbehaving? See the [Troubleshooting Guide](../TROUBLESHOOTING.md) for debugging strategies.

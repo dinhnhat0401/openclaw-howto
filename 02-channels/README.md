@@ -387,4 +387,6 @@ openclaw channel logs <name> --tail 50
 2. **[Module 04 - Skills](../04-skills/)** — Trigger skills from different channels for context-aware automation
 3. **[Module 06 - Automation](../06-automation/)** — Route automated outputs to the right channel with multi-channel cron jobs
 
+Once your channels are stable, see **[OPERATIONS.md](../OPERATIONS.md)** for ongoing channel health checks and **[POWER_USER_PLAYBOOK.md](../POWER_USER_PLAYBOOK.md)** for multi-channel routing patterns.
+
 Having channel issues? See the [Troubleshooting Guide](../TROUBLESHOOTING.md) for channel-specific diagnostics.
