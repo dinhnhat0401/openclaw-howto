@@ -76,6 +76,12 @@ The best first automations are:
 
 That is enough to create daily leverage without turning your setup into a noisy science project.
 
+See [Layer 3: Daily Automations](#layer-3-daily-automations) below for the exact `openclaw cron create` commands. After creating them, verify all three are active:
+
+```bash
+openclaw cron list
+```
+
 ### 5. Build one workflow that removes real toil
 
 Pick only **one** of these first:
@@ -156,6 +162,18 @@ What to include:
 - tasks due today
 - weather if relevant
 
+```bash
+openclaw cron create \
+  --schedule "30 7 * * *" \
+  --action "Send me a morning briefing: calendar for the next 24 hours, top unread or urgent emails, PRs awaiting my review, tasks due today, and weather. Use short bullet points. Skip any section with nothing to report."
+```
+
+Test it before trusting it:
+
+```bash
+openclaw cron run morning-briefing --now
+```
+
 #### PR Review Watch
 
 What to include:
@@ -165,6 +183,12 @@ What to include:
 - notify on new or materially changed PRs
 - suppress unchanged repeats for at least 30 minutes
 
+```bash
+openclaw cron create \
+  --schedule "*/30 9-18 * * 1-5" \
+  --action "Check for GitHub PRs assigned to me or requesting my review. Only notify me about PRs that are new or materially changed since last check. For each PR, include: repo, title, author, lines changed, and a one-line risk summary. Stay silent if nothing changed."
+```
+
 #### End-of-Day Summary
 
 What to include:
@@ -173,6 +197,12 @@ What to include:
 - completed tasks
 - unfinished items worth carrying forward
 - tomorrow’s first meeting and top priorities
+
+```bash
+openclaw cron create \
+  --schedule "0 18 * * 1-5" \
+  --action "Send me an end-of-day summary: commits and PRs I merged or reviewed today, tasks I completed, unfinished items worth carrying to tomorrow, and my first meeting tomorrow with its time. Keep it scannable."
+```
 
 ### Layer 4: High-Value Workflows
 
@@ -449,9 +479,9 @@ You do not need 50 integrations to become productive.
 
 ### Day 2 — Daily Visibility
 
-- create morning briefing
-- create PR review watch
-- test both manually
+- create morning briefing and PR review watch (see [Layer 3 commands](#layer-3-daily-automations))
+- test both manually with `openclaw cron run <name> --now`
+- verify output format and delivery channel
 
 ### Day 3 — Reduce Inbox Noise
 
