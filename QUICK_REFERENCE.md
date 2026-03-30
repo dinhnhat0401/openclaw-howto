@@ -102,6 +102,22 @@ openclaw start
 | `openclaw cron delete <name>` | Delete a job |
 | `openclaw cron history <name> --last 10` | View last N runs |
 
+### Workflows
+
+| Command | Description |
+|---|---|
+| `openclaw workflow list` | List all workflows |
+| `openclaw workflow create --file <path>` | Create from YAML file |
+| `openclaw workflow run <name>` | Run a workflow |
+| `openclaw workflow run <name> --verbose` | Run with step-by-step output |
+| `openclaw workflow test <name> --dry-run` | Simulate without executing |
+| `openclaw workflow test <name> --mock-trigger '...'` | Test with mock trigger data |
+| `openclaw workflow history <name>` | View run history |
+| `openclaw workflow status --all` | Show status of all workflows |
+| `openclaw workflow pause <name>` | Pause a workflow |
+| `openclaw workflow resume <name>` | Resume a paused workflow |
+| `openclaw workflow delete <name>` | Delete a workflow |
+
 ### Integrations
 
 | Command | Description |
