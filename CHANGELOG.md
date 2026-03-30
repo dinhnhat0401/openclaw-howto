@@ -21,6 +21,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **Troubleshooting:** Added skill failures section (Section 5) with diagnosis commands, debug flow, and fix patterns.
 - **Troubleshooting:** Expanded recovery playbook (Section 12) with step-by-step CLI commands for each layer of the stack.
 - **Operations:** Added actionable CLI commands to weekly and monthly review checklists, replacing prose-only guidance.
+- **Operations:** Added Upgrade Playbook with pre-upgrade snapshot, post-upgrade verification, rollback procedure, timing guidance, and community skill compatibility steps.
+- **Troubleshooting:** Cross-linked upgrade drift fix to the new Upgrade Playbook.
+- **Quick Reference:** Added "broken after upgrade" entry to common troubleshooting table.
 - **Getting Started:** Added troubleshooting cross-link matching all other modules.
 - **Contributing:** Updated to reference `trunk` as the target branch instead of `main`.
 - **README:** Redesigned for visual appeal with badges, module grid, learning path diagram, use-case mind map, and time-savings table.

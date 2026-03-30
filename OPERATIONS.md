@@ -209,6 +209,142 @@ This prevents premature trust.
 
 ---
 
+## Upgrade Playbook
+
+Upgrading OpenClaw can break skills, cron jobs, integrations, or config.
+Do not update blindly.
+
+### Pre-upgrade snapshot
+
+Before upgrading, capture your current state so you can roll back:
+
+```bash
+# 1. Record current version
+openclaw --version > /tmp/openclaw-pre-upgrade-version.txt
+
+# 2. Run a full backup (see Backup Strategy below)
+BACKUP_DIR=~/openclaw-backup-pre-upgrade-$(date +%Y%m%d)
+mkdir -p "$BACKUP_DIR"
+cp ~/.openclaw/config.yaml "$BACKUP_DIR/"
+cp ~/.openclaw/.env "$BACKUP_DIR/"
+cp ~/.openclaw/USER.md "$BACKUP_DIR/" 2>/dev/null
+cp ~/.openclaw/TOOLS.md "$BACKUP_DIR/" 2>/dev/null
+cp ~/.openclaw/AGENTS.md "$BACKUP_DIR/" 2>/dev/null
+cp ~/.openclaw/SOUL.md "$BACKUP_DIR/" 2>/dev/null
+cp -r ~/.openclaw/skills/ "$BACKUP_DIR/skills/" 2>/dev/null
+cp -r ~/.openclaw/workflows/ "$BACKUP_DIR/workflows/" 2>/dev/null
+openclaw memory export > "$BACKUP_DIR/memory.json"
+openclaw cron list --json > "$BACKUP_DIR/crons.json"
+
+# 3. Verify all systems are healthy before touching anything
+openclaw status
+openclaw integration status --all
+openclaw cron history --all --last 1d --status failed
+```
+
+If anything is already broken, fix it first.
+Upgrading on top of an unhealthy system makes diagnosis harder.
+
+### Perform the upgrade
+
+```bash
+# Stop the daemon cleanly
+openclaw stop
+
+# Upgrade
+brew upgrade openclaw-cli         # or: npm update -g @openclaw/cli
+
+# Verify the new version installed
+openclaw --version
+
+# Validate config against the new version
+openclaw config validate
+```
+
+If `config validate` reports errors, the new version likely changed or removed a config key.
+Check the [release notes](https://github.com/openclaw/openclaw/releases) for breaking changes and update `config.yaml` accordingly.
+
+### Post-upgrade verification
+
+Run through each layer of the stack, in order:
+
+```bash
+# 1. Start and check daemon health
+openclaw start
+openclaw status
+
+# 2. Test LLM connectivity
+openclaw test llm
+
+# 3. Test channels
+openclaw channel list
+openclaw channel test <name>       # test your primary channel
+
+# 4. Test integrations
+openclaw integration status --all
+openclaw integration test <name>   # for any that look suspicious
+
+# 5. Test skills
+openclaw skill list
+openclaw skill test <name> --dry-run   # test your most-used skill
+
+# 6. Test cron jobs
+openclaw cron list
+openclaw cron run <name> --now     # test your most important cron
+
+# 7. Test workflows
+openclaw workflow list
+openclaw workflow test <name> --dry-run  # test your most important workflow
+```
+
+### Rolling back
+
+If the upgrade causes problems you cannot quickly fix:
+
+```bash
+# Stop the new version
+openclaw stop
+
+# Downgrade to the previous version
+brew install openclaw-cli@<previous-version>   # or: npm install -g @openclaw/cli@<version>
+
+# Restore config if it was modified
+cp "$BACKUP_DIR/config.yaml" ~/.openclaw/config.yaml
+
+# Start and verify
+openclaw start
+openclaw status
+openclaw config validate
+```
+
+### Upgrade timing
+
+- **Do not** upgrade right before a deadline or important workflow run
+- **Do** upgrade during a low-stakes window (Friday afternoon if weekend is quiet, or Monday morning before work ramps up)
+- **Do** check the [release notes](https://github.com/openclaw/openclaw/releases) before upgrading -- look for breaking changes, deprecated flags, and migration steps
+- **Do** wait 2--3 days after a major release before upgrading, to let early adopters surface issues
+
+### Community skills after upgrade
+
+Major OpenClaw upgrades can break community skills that depend on internal APIs:
+
+```bash
+# Update all skills to their latest compatible versions
+openclaw skill update --all
+
+# If a specific skill fails after update
+openclaw skill remove <name>
+openclaw skill install <name>      # reinstalls the latest version
+```
+
+If a community skill is not yet compatible with the new OpenClaw version, disable it and check back later:
+
+```bash
+openclaw skill disable <name>
+```
+
+---
+
 ## Backup Strategy
 
 At minimum, preserve:

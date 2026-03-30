@@ -55,7 +55,7 @@ lsof -i :3000
 | Config syntax broken | validate config, revert recent edits |
 | API key missing | move key to env / `.env`, restart |
 | Port conflict | change port or stop conflicting process |
-| Upgrade drift | check version, restart cleanly, re-run tests |
+| Upgrade drift | check version, restart cleanly, re-run tests — see [OPERATIONS.md — Upgrade Playbook](OPERATIONS.md#upgrade-playbook) |
 
 ---
 

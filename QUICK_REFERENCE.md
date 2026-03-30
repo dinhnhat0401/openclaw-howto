@@ -421,6 +421,7 @@ openclaw config set channels.slack.permissions.mode trusted
 | Browser automation fails | `openclaw browser check` then `openclaw browser install` |
 | Integration auth expired | `openclaw integration test <name>` then re-run `openclaw integration config <name>` |
 | OpenClaw won't start | Check `openclaw logs --level error`, verify Node.js 22.14+, run `openclaw test all` |
+| Broken after upgrade | `openclaw config validate`, then follow [Upgrade Playbook](OPERATIONS.md#upgrade-playbook) |
 
 ---
 
