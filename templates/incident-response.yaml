@@ -1,0 +1,92 @@
+name: incident-response
+description: Automated incident detection, triage, and on-call escalation
+version: 1.0.0
+
+# HOW TO USE:
+#   openclaw workflow import incident-response.yaml
+#   Set up PagerDuty/Datadog webhook → openclaw webhook
+
+trigger:
+  type: webhook
+  source: any         # pagerduty | datadog | grafana | custom
+  event: alert
+
+config:
+  oncall_channel: telegram
+  severity_threshold: P2     # P1 | P2 | P3 — only page for P2+
+  runbook_repo: "CHANGE_ME/runbooks"
+  slack_ops_channel: "#ops-oncall"
+
+steps:
+  - name: parse_alert
+    tool: llm
+    model: claude-haiku-4-5
+    prompt: |
+      Parse this alert and extract key fields:
+      {{ trigger.payload }}
+
+      Return JSON:
+      {
+        "title": "...",
+        "severity": "P1|P2|P3",
+        "service": "...",
+        "environment": "prod|staging|dev",
+        "error_message": "...",
+        "affected_users": number or null
+      }
+
+  - name: should_page
+    condition: "{{ parse_alert.severity }} in ['P1', 'P2']"
+    skip_if_false: false
+
+  - name: find_runbook
+    tool: github
+    action: search_code
+    repo: "{{ config.runbook_repo }}"
+    query: "{{ parse_alert.service }} runbook"
+    limit: 1
+
+  - name: get_recent_deploys
+    tool: github
+    action: list_releases
+    repos: ["CHANGE_ME/{{ parse_alert.service }}"]
+    since: "-2h"
+
+  - name: triage
+    tool: llm
+    model: claude-opus-4-6
+    prompt: |
+      Incident detected:
+      - Service: {{ parse_alert.service }}
+      - Severity: {{ parse_alert.severity }}
+      - Error: {{ parse_alert.error_message }}
+      - Affected users: {{ parse_alert.affected_users }}
+      - Recent deploys: {{ get_recent_deploys.results }}
+      - Runbook: {{ find_runbook.content }}
+
+      Provide:
+      1. Likely root cause (ranked by probability)
+      2. Immediate mitigation steps
+      3. Whether to roll back last deploy
+      4. Escalation recommendation
+
+  - name: notify_oncall
+    tool: channel
+    condition: "{{ should_page }}"
+    target: "{{ config.oncall_channel }}"
+    message: |
+      🚨 {{ parse_alert.severity }} INCIDENT
+      Service: {{ parse_alert.service }}
+      Env: {{ parse_alert.environment }}
+      Error: {{ parse_alert.error_message }}
+
+      Triage:
+      {{ triage.output }}
+
+      Runbook: {{ find_runbook.url }}
+
+  - name: post_to_slack
+    tool: slack
+    action: post_message
+    channel: "{{ config.slack_ops_channel }}"
+    message: "{{ notify_oncall.message }}"

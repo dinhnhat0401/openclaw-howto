@@ -1,0 +1,96 @@
+name: pr-pipeline
+description: Autonomous code review and CI verification for new PRs
+version: 1.0.0
+
+# HOW TO USE:
+#   openclaw workflow import pr-pipeline.yaml
+#   openclaw workflow run pr-pipeline --pr 123 --repo owner/repo
+
+trigger:
+  type: webhook
+  source: github
+  event: pull_request
+  action: [opened, synchronize]
+
+config:
+  repos:
+    - "CHANGE_ME/repo-name"
+  auto_approve: false           # true = merge without human if CI green
+  review_depth: thorough        # quick | standard | thorough
+  notify_channel: telegram      # slack | telegram | whatsapp
+
+steps:
+  - name: fetch_pr
+    tool: github
+    action: get_pr_details
+    repo: "{{ trigger.repo }}"
+    pr_number: "{{ trigger.pr_number }}"
+
+  - name: get_diff
+    tool: github
+    action: get_diff
+    repo: "{{ trigger.repo }}"
+    pr_number: "{{ trigger.pr_number }}"
+
+  - name: check_ci
+    tool: github
+    action: get_check_runs
+    repo: "{{ trigger.repo }}"
+    ref: "{{ fetch_pr.head_sha }}"
+    wait_for_completion: true
+    timeout: 600s
+
+  - name: review_code
+    tool: llm
+    model: claude-opus-4-6
+    prompt: |
+      Review this pull request:
+
+      Title: {{ fetch_pr.title }}
+      Author: {{ fetch_pr.author }}
+      Description: {{ fetch_pr.body }}
+
+      Diff:
+      {{ get_diff.output }}
+
+      Review for:
+      1. Logic errors and bugs
+      2. Security vulnerabilities (OWASP top 10)
+      3. Performance issues
+      4. Error handling gaps
+      5. Style and readability
+
+      CI Status: {{ check_ci.status }}
+
+      Format:
+      - Summary: One-sentence overview
+      - Issues: Numbered list with severity (critical/major/minor)
+      - Suggestions: Non-blocking improvements
+      - Verdict: APPROVE / REQUEST_CHANGES / COMMENT
+
+  - name: post_review
+    tool: github
+    action: create_review
+    repo: "{{ trigger.repo }}"
+    pr_number: "{{ trigger.pr_number }}"
+    event: "{{ review_code.verdict }}"
+    body: "{{ review_code.output }}"
+
+  - name: auto_merge
+    tool: github
+    action: merge_pr
+    condition: "{{ config.auto_approve }} == true && {{ review_code.verdict }} == 'APPROVE' && {{ check_ci.status }} == 'success'"
+    repo: "{{ trigger.repo }}"
+    pr_number: "{{ trigger.pr_number }}"
+    method: squash
+
+  - name: notify
+    tool: channel
+    condition: "{{ review_code.verdict }} == 'REQUEST_CHANGES'"
+    target: "{{ config.notify_channel }}"
+    message: |
+      ⚠️ PR #{{ trigger.pr_number }} needs attention
+      Repo: {{ trigger.repo }}
+      Author: {{ fetch_pr.author }}
+      Issues: {{ review_code.issue_count }}
+      Link: {{ fetch_pr.url }}

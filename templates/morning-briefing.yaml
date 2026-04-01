@@ -1,0 +1,80 @@
+name: morning-briefing
+description: Daily morning briefing with calendar, email, GitHub, and weather
+version: 1.0.0
+
+# HOW TO USE:
+#   openclaw workflow import morning-briefing.yaml
+#   openclaw cron create --schedule "30 7 * * 1-5" --workflow morning-briefing
+
+trigger:
+  type: cron
+  schedule: "30 7 * * 1-5"   # Weekdays at 7:30 AM — change to your timezone
+
+config:
+  channel: telegram            # slack | telegram | whatsapp
+  calendar_lookahead_hours: 8  # how many hours ahead to check
+  github_repos:
+    - "CHANGE_ME/repo-name"    # repos to check for open PRs
+  weather_location: "Tokyo"    # your city
+
+steps:
+  - name: get_calendar
+    tool: calendar
+    action: list_events
+    lookahead_hours: "{{ config.calendar_lookahead_hours }}"
+
+  - name: get_prs
+    tool: github
+    action: list_pull_requests
+    repos: "{{ config.github_repos }}"
+    filter: assigned_to_me
+    state: open
+
+  - name: get_emails
+    tool: gmail
+    action: list_unread
+    max: 10
+    labels: [INBOX]
+
+  - name: get_weather
+    tool: shell
+    command: "curl -s 'wttr.in/{{ config.weather_location }}?format=3'"
+
+  - name: compose_briefing
+    tool: llm
+    model: claude-haiku-4-5
+    prompt: |
+      Compose a concise morning briefing. Be direct — no filler.
+
+      Today's meetings:
+      {{ get_calendar.events }}
+
+      Open PRs needing my review:
+      {{ get_prs.results }}
+
+      Unread emails (top 10):
+      {{ get_emails.messages }}
+
+      Weather: {{ get_weather.output }}
+
+      Format:
+      🌅 Morning Briefing — {{ date }}
+
+      📅 TODAY ({{ get_calendar.count }} meetings)
+      [List meetings with time]
+
+      🔀 PRs TO REVIEW ({{ get_prs.count }})
+      [List PRs with author and age]
+
+      📬 EMAIL ({{ get_emails.unread_count }} unread)
+      [Top 3 most important emails]
+
+      🌤 WEATHER
+      [One line]
+
+      Focus: [One sentence on what to prioritize today]
+
+  - name: send_briefing
+    tool: channel
+    target: "{{ config.channel }}"
+    message: "{{ compose_briefing.output }}"

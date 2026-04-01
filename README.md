@@ -12,7 +12,7 @@
 </h3>
 
 <p>
-  <strong>10 modules</strong> &bull; <strong>25+ templates</strong> &bull; <strong>9,500+ lines</strong> &bull; <strong>100% free</strong>
+  <strong>11 modules</strong> &bull; <strong>7 ready templates</strong> &bull; <strong>3 setup scripts</strong> &bull; <strong>100% free</strong>
 </p>
 
 <br/>
@@ -157,7 +157,20 @@ Then message OpenClaw on any connected channel:
 "What can you do?"
 ```
 
-That's it. You're running. Now dive into the [modules](#-10-modules).
+**Or skip the tour and get productive in 5 minutes:**
+
+```bash
+# Clone this guide
+git clone https://github.com/dinhnhat0401/openclaw-howto.git
+cd openclaw-howto
+
+# Run the quickstart script — installs 3 daily automations automatically
+bash scripts/quickstart.sh
+```
+
+That installs a morning briefing, end-of-day summary, and weekly report. You'll start getting value before you finish reading.
+
+Now dive into the [modules](#-modules).
 
 <br/>
 
@@ -217,6 +230,7 @@ graph LR
 | 07 | **[Browser Automation](07-browser-automation/)** | 1 hr | Web research, form filling, data extraction |
 | 08 | **[Workflows](08-workflows/)** | 2 hrs | Multi-step autonomous pipelines |
 | 09 | **[Advanced Features](09-advanced-features/)** | 1.5 hrs | Model routing, permissions, security, performance |
+| 11 | **[Control Plane](11-control-plane/)** | 45 min | Autonomous coding agent orchestration from chat |
 
 </details>
 
@@ -226,7 +240,7 @@ graph LR
 
 <br/>
 
-## 10 Modules
+## Modules
 
 <div align="center">
 

@@ -1,0 +1,89 @@
+name: meeting-autopilot
+description: Pre-meeting prep, live notes, and post-meeting follow-up
+version: 1.0.0
+
+# HOW TO USE:
+#   openclaw workflow import meeting-autopilot.yaml
+
+trigger:
+  type: calendar_event
+  match: "*"
+  offset: "-10m"           # fires 10 min before every meeting
+
+config:
+  notes_channel: telegram
+  followup_channel: slack
+  calendar_id: primary
+
+steps:
+  # ── 10 min before: prep briefing ──
+
+  - name: get_attendees
+    tool: calendar
+    action: get_attendee_details
+    event_id: "{{ trigger.event.id }}"
+
+  - name: prep_briefing
+    tool: llm
+    model: claude-haiku-4-5
+    prompt: |
+      Meeting in 10 minutes:
+      Title: {{ trigger.event.title }}
+      Attendees: {{ get_attendees.names }}
+      Description: {{ trigger.event.description }}
+
+      Write a quick prep brief (5 bullets max):
+      - What this meeting is about
+      - Key decisions or outcomes needed
+      - Questions to ask
+      - Background on attendees (if relevant)
+      - What to avoid
+
+  - name: send_prep
+    tool: channel
+    target: "{{ config.notes_channel }}"
+    message: |
+      📋 Meeting in 10 min: {{ trigger.event.title }}
+      {{ prep_briefing.output }}
+
+  # ── After meeting: notes + follow-up ──
+
+  - name: wait_for_end
+    tool: calendar
+    action: wait_for_event_end
+    event_id: "{{ trigger.event.id }}"
+    timeout: 120m
+
+  - name: get_transcript
+    tool: shell
+    command: "openclaw memory search '{{ trigger.event.title }}' --since 2h --type conversation"
+    on_error: skip
+
+  - name: write_notes
+    tool: llm
+    model: claude-opus-4-6
+    prompt: |
+      Summarize this meeting:
+      Title: {{ trigger.event.title }}
+      Attendees: {{ get_attendees.names }}
+      Conversation: {{ get_transcript.output }}
+
+      Write:
+      1. Key decisions made
+      2. Action items with owners (format: "- [ ] @name: task")
+      3. Open questions to resolve
+      4. Next meeting if mentioned
+
+  - name: send_notes
+    tool: channel
+    target: "{{ config.followup_channel }}"
+    message: |
+      📝 Notes: {{ trigger.event.title }}
+      {{ write_notes.output }}
+
+  - name: create_tasks
+    tool: github
+    action: create_issues
+    condition: "{{ write_notes.action_items | length }} > 0"
+    repo: "CHANGE_ME/repo"
+    issues: "{{ write_notes.action_items }}"

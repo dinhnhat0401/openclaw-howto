@@ -1,0 +1,64 @@
+name: control-plane-report
+description: Daily KPI report from Control Plane agent orchestration system
+version: 1.0.0
+
+# HOW TO USE:
+#   openclaw workflow import templates/control-plane-report.yaml
+#   openclaw cron create --schedule "0 9 * * 1-5" --workflow control-plane-report
+
+trigger:
+  type: cron
+  schedule: "0 9 * * 1-5"     # Weekdays at 9 AM
+
+config:
+  channel: telegram
+  control_plane_url: "http://localhost:3000"
+  hands_free_target: 60          # warn if below this %
+  rollback_target: 5             # warn if above this %
+
+steps:
+  - name: fetch_metrics
+    tool: shell
+    command: "curl -s {{ config.control_plane_url }}/api/metrics?days=1"
+    on_error: skip
+
+  - name: fetch_weekly_metrics
+    tool: shell
+    command: "curl -s {{ config.control_plane_url }}/api/metrics?days=7"
+    on_error: skip
+
+  - name: compose_report
+    tool: llm
+    model: claude-haiku-4-5
+    prompt: |
+      Summarize these Control Plane automation metrics.
+
+      Today's metrics: {{ fetch_metrics.output }}
+      Weekly metrics: {{ fetch_weekly_metrics.output }}
+
+      Targets:
+      - Hands-free rate: ≥{{ config.hands_free_target }}%
+      - Rollback rate: ≤{{ config.rollback_target }}%
+
+      Format:
+      🤖 Control Plane Report
+
+      TODAY
+      Hands-free: X% (target: ≥60%) ✅/⚠️
+      Tasks: completed/started
+      Rollback: X%
+
+      THIS WEEK
+      Hands-free: X%
+      S-tier: X%
+      M-tier: X%
+      Total tasks: X
+
+      [One line: any issues or improvements to note]
+
+      Keep it under 10 lines. Be direct.
+
+  - name: send_report
+    tool: channel
+    target: "{{ config.channel }}"
+    message: "{{ compose_report.output }}"

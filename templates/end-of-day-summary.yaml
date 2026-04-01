@@ -1,0 +1,75 @@
+name: end-of-day-summary
+description: End-of-day recap with shipped work, blockers, and tomorrow prep
+version: 1.0.0
+
+# HOW TO USE:
+#   openclaw workflow import end-of-day-summary.yaml
+#   openclaw cron create --schedule "0 18 * * 1-5" --workflow end-of-day-summary
+
+trigger:
+  type: cron
+  schedule: "0 18 * * 1-5"   # Weekdays at 6:00 PM
+
+config:
+  channel: telegram
+  github_repos:
+    - "CHANGE_ME/repo-name"
+  work_hours_start: "09:00"
+
+steps:
+  - name: get_commits
+    tool: github
+    action: list_commits
+    repos: "{{ config.github_repos }}"
+    author: me
+    since: today
+
+  - name: get_prs_merged
+    tool: github
+    action: list_pull_requests
+    repos: "{{ config.github_repos }}"
+    state: merged
+    author: me
+    since: today
+
+  - name: get_prs_open
+    tool: github
+    action: list_pull_requests
+    repos: "{{ config.github_repos }}"
+    state: open
+    author: me
+
+  - name: get_tomorrow_meetings
+    tool: calendar
+    action: list_events
+    date: tomorrow
+
+  - name: compose_summary
+    tool: llm
+    model: claude-haiku-4-5
+    prompt: |
+      Write a concise end-of-day summary.
+
+      Commits today: {{ get_commits.results }}
+      PRs merged today: {{ get_prs_merged.results }}
+      PRs still open: {{ get_prs_open.results }}
+      Tomorrow's meetings: {{ get_tomorrow_meetings.events }}
+
+      Format:
+      🌆 End of Day — {{ date }}
+
+      ✅ SHIPPED
+      [What was merged or committed]
+
+      🔄 IN PROGRESS
+      [Open PRs]
+
+      📅 TOMORROW
+      [Meetings + top priority to tackle first]
+
+      Keep it short. No preamble.
+
+  - name: send_summary
+    tool: channel
+    target: "{{ config.channel }}"
+    message: "{{ compose_summary.output }}"

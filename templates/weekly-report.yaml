@@ -1,0 +1,80 @@
+name: weekly-report
+description: Auto-generated weekly progress report for team or personal use
+version: 1.0.0
+
+# HOW TO USE:
+#   openclaw workflow import weekly-report.yaml
+#   openclaw cron create --schedule "0 17 * * 5" --workflow weekly-report
+
+trigger:
+  type: cron
+  schedule: "0 17 * * 5"     # Fridays at 5 PM
+
+config:
+  channel: telegram
+  github_repos:
+    - "CHANGE_ME/repo-name"
+  team_slack_channel: "#engineering"
+  report_period_days: 7
+
+steps:
+  - name: get_commits
+    tool: github
+    action: list_commits
+    repos: "{{ config.github_repos }}"
+    author: me
+    since: "-{{ config.report_period_days }}d"
+
+  - name: get_merged_prs
+    tool: github
+    action: list_pull_requests
+    repos: "{{ config.github_repos }}"
+    state: merged
+    author: me
+    since: "-{{ config.report_period_days }}d"
+
+  - name: get_reviewed_prs
+    tool: github
+    action: list_reviews
+    repos: "{{ config.github_repos }}"
+    reviewer: me
+    since: "-{{ config.report_period_days }}d"
+
+  - name: get_meetings
+    tool: calendar
+    action: list_events
+    since: "-{{ config.report_period_days }}d"
+    until: now
+
+  - name: compose_report
+    tool: llm
+    model: claude-haiku-4-5
+    prompt: |
+      Write a weekly progress report.
+
+      Commits this week: {{ get_commits.results }}
+      PRs merged: {{ get_merged_prs.results }}
+      PRs reviewed: {{ get_reviewed_prs.results }}
+      Meetings attended: {{ get_meetings.count }}
+
+      Format:
+      📊 Weekly Report — {{ date_range }}
+
+      ✅ SHIPPED
+      [Bullet list of PRs merged with one-line description]
+
+      👀 REVIEWED
+      [PRs reviewed with verdict]
+
+      🚧 NEXT WEEK
+      [Open PRs in progress]
+
+      📈 STATS
+      Commits: {{ get_commits.count }}
+      PRs shipped: {{ get_merged_prs.count }}
+      PRs reviewed: {{ get_reviewed_prs.count }}
+
+  - name: send_report
+    tool: channel
+    target: "{{ config.channel }}"
+    message: "{{ compose_report.output }}"
