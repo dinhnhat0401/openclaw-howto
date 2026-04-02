@@ -1,0 +1,82 @@
+# .agents/glossary.yaml
+# Controlled vocabulary for openclaw-howto.
+# Before introducing new terminology, check this file.
+# Before changing a term, update all usages across the repo.
+
+version: "1.0.0"
+
+terms:
+  - term: skill
+    definition: "A reusable, named capability invoked with a slash command (e.g. /morning-briefing). Defined in YAML. Lives in the user's skills directory."
+    do_not_use: [plugin, command, macro, shortcut]
+    see_also: [workflow]
+    module: "04"
+
+  - term: workflow
+    definition: "A multi-step automation defined in YAML with triggers, config, and steps. Can branch, loop, and call external tools."
+    do_not_use: [pipeline, job, task, automation-script]
+    see_also: [skill, trigger, step]
+    module: "08"
+
+  - term: trigger
+    definition: "An event that starts a workflow. Types: cron, webhook, file_watcher, calendar_event, condition."
+    do_not_use: [hook, listener, watcher, event-handler]
+    see_also: [workflow, cron]
+    module: "06"
+
+  - term: channel
+    definition: "An output target where OpenClaw sends messages. Examples: telegram, slack, whatsapp, email, discord."
+    do_not_use: [integration, sink, destination, output]
+    see_also: [integration]
+    module: "02"
+
+  - term: integration
+    definition: "A connected external service OpenClaw can read from or write to. Examples: github, gmail, calendar, notion, linear."
+    do_not_use: [connector, plugin, adapter]
+    see_also: [channel]
+    module: "05"
+
+  - term: cron
+    definition: "A time-based scheduled trigger. Uses standard 5-field cron expression. Minimum interval: 1 hour."
+    do_not_use: [scheduler, timer, recurring-task]
+    see_also: [trigger, workflow]
+    module: "06"
+
+  - term: step
+    definition: "A single action within a workflow. Each step has a name, tool, and action. Steps run sequentially unless parallelized."
+    do_not_use: [action, task, operation]
+    see_also: [workflow, tool]
+    module: "08"
+
+  - term: tool
+    definition: "A capability available to steps. Examples: github, llm, channel, browser, bash. Each tool has a set of actions."
+    do_not_use: [service, capability, function]
+    see_also: [step, integration]
+    module: "08"
+
+  - term: memory
+    definition: "Persistent context files OpenClaw reads at the start of every session. Key files: USER.md, TOOLS.md, AGENTS.md, HEARTBEAT.md."
+    do_not_use: [context, state, history, profile]
+    see_also: []
+    module: "03"
+
+  - term: control-plane
+    definition: "The autonomous orchestration layer that manages agents, policies, and KPIs. Sits above individual workflows."
+    do_not_use: [orchestrator, manager, supervisor]
+    see_also: [workflow, skill]
+    module: "11"
+
+  - term: model
+    definition: "The LLM used for a step or agent. Referenced by model ID (e.g. claude-sonnet-4-6, claude-haiku-4-5, claude-opus-4-6)."
+    do_not_use: [AI, LLM, engine, backend]
+    valid_values:
+      - "claude-opus-4-6"
+      - "claude-sonnet-4-6"
+      - "claude-haiku-4-5"
+    see_also: [step]
+
+  - term: session
+    definition: "A single interactive conversation with OpenClaw. Sessions can be persisted or ephemeral."
+    do_not_use: [conversation, chat, thread]
+    see_also: [memory]
+    module: "01"
