@@ -1,0 +1,245 @@
+# .agents/metadata.yaml
+# Machine-readable inventory of all content in this repo.
+# Update this file whenever you add, remove, or significantly change a module, template, or script.
+# Query with: yq '.modules[] | select(.status == "needs-update")' .agents/metadata.yaml
+
+version: "1.0.0"
+last_updated: "2026-04-02"
+
+modules:
+  - id: "01"
+    title: "Getting Started"
+    path: "01-getting-started/README.md"
+    difficulty: beginner
+    time: "30m"
+    prerequisites: []
+    keywords: [installation, setup, first-run, configuration]
+    status: stable
+    frontmatter: false
+    related_modules: ["02", "03"]
+
+  - id: "02"
+    title: "Channels"
+    path: "02-channels/README.md"
+    difficulty: beginner
+    time: "45m"
+    prerequisites: ["01"]
+    keywords: [telegram, slack, whatsapp, email, notifications, output]
+    status: stable
+    frontmatter: false
+    related_modules: ["05", "06"]
+
+  - id: "03"
+    title: "Memory"
+    path: "03-memory/README.md"
+    difficulty: beginner
+    time: "30m"
+    prerequisites: ["01"]
+    keywords: [memory, context, USER.md, TOOLS.md, persistence]
+    status: stable
+    frontmatter: false
+    related_modules: ["09"]
+
+  - id: "04"
+    title: "Skills"
+    path: "04-skills/README.md"
+    difficulty: beginner
+    time: "45m"
+    prerequisites: ["01"]
+    keywords: [skills, slash-commands, reusable, custom]
+    status: stable
+    frontmatter: false
+    related_modules: ["08"]
+
+  - id: "05"
+    title: "Integrations"
+    path: "05-integrations/README.md"
+    difficulty: intermediate
+    time: "1h"
+    prerequisites: ["01", "02"]
+    keywords: [github, gmail, calendar, notion, slack, linear, integrations]
+    status: stable
+    frontmatter: false
+    related_modules: ["06", "08"]
+
+  - id: "06"
+    title: "Automation & Scheduling"
+    path: "06-automation/README.md"
+    difficulty: intermediate
+    time: "1.5h"
+    prerequisites: ["04", "05"]
+    keywords: [cron, scheduling, automation, triggers, file-watcher, webhook]
+    status: stable
+    frontmatter: false
+    related_modules: ["07", "08"]
+
+  - id: "07"
+    title: "Browser Automation"
+    path: "07-browser-automation/README.md"
+    difficulty: intermediate
+    time: "1h"
+    prerequisites: ["06"]
+    keywords: [browser, scraping, forms, playwright, web-automation]
+    status: stable
+    frontmatter: false
+    related_modules: ["08"]
+
+  - id: "08"
+    title: "Workflows"
+    path: "08-workflows/README.md"
+    difficulty: intermediate
+    time: "1.5h"
+    prerequisites: ["05", "06"]
+    keywords: [workflows, multi-step, orchestration, branching, error-handling]
+    status: stable
+    frontmatter: false
+    related_modules: ["09", "11"]
+
+  - id: "09"
+    title: "Advanced Features"
+    path: "09-advanced-features/README.md"
+    difficulty: advanced
+    time: "1.5h"
+    prerequisites: ["06", "08"]
+    keywords: [token-optimization, cost, advanced, performance]
+    status: stable
+    frontmatter: false
+    related_modules: ["10", "11"]
+    extra_files:
+      - "09-advanced-features/token-optimization.md"
+
+  - id: "10"
+    title: "CLI Deep Dive"
+    path: "10-cli/README.md"
+    difficulty: advanced
+    time: "1h"
+    prerequisites: ["01"]
+    keywords: [cli, commands, flags, scripting, shell]
+    status: stable
+    frontmatter: false
+    related_modules: ["09"]
+
+  - id: "11"
+    title: "Control Plane"
+    path: "11-control-plane/README.md"
+    difficulty: advanced
+    time: "2h"
+    prerequisites: ["08", "09"]
+    keywords: [control-plane, autonomous, agents, policy, KPI, orchestration]
+    status: stable
+    frontmatter: false
+    related_modules: ["08"]
+
+templates:
+  - name: morning-briefing
+    path: "templates/morning-briefing.yaml"
+    description: "Daily morning summary: calendar, GitHub, email, weather"
+    trigger_type: cron
+    schedule: "30 7 * * 1-5"
+    model: claude-haiku-4-5
+    channels: [telegram, slack, whatsapp]
+    integrations: [github, gmail, calendar, weather]
+    version: "1.0.0"
+    status: stable
+
+  - name: end-of-day-summary
+    path: "templates/end-of-day-summary.yaml"
+    description: "Daily EOD summary: commits, PRs, open tasks, tomorrow prep"
+    trigger_type: cron
+    schedule: "0 18 * * 1-5"
+    model: claude-haiku-4-5
+    channels: [telegram]
+    integrations: [github, todoist, calendar]
+    version: "1.0.0"
+    status: stable
+
+  - name: weekly-report
+    path: "templates/weekly-report.yaml"
+    description: "Friday weekly metrics: commits, PRs, meetings, task completion"
+    trigger_type: cron
+    schedule: "0 17 * * 5"
+    model: claude-sonnet-4-6
+    channels: [slack]
+    integrations: [github, gmail, calendar, todoist]
+    version: "1.0.0"
+    status: stable
+
+  - name: pr-pipeline
+    path: "templates/pr-pipeline.yaml"
+    description: "Autonomous code review on PR open/sync. Optional auto-merge."
+    trigger_type: webhook
+    webhook_source: github
+    webhook_event: "pull_request"
+    model: claude-opus-4-6
+    channels: [telegram, slack]
+    integrations: [github]
+    version: "1.0.0"
+    status: stable
+    config_required: [repos, notify_channel]
+
+  - name: meeting-autopilot
+    path: "templates/meeting-autopilot.yaml"
+    description: "Pre-meeting prep + post-meeting notes and action items"
+    trigger_type: calendar_event
+    model: claude-sonnet-4-6
+    channels: [telegram]
+    integrations: [calendar, github, notion]
+    version: "1.0.0"
+    status: stable
+
+  - name: incident-response
+    path: "templates/incident-response.yaml"
+    description: "Alert triage: severity classification, runbook lookup, escalation"
+    trigger_type: webhook
+    webhook_source: [pagerduty, datadog, grafana]
+    model: claude-opus-4-6
+    channels: [slack]
+    integrations: [pagerduty, datadog, github]
+    version: "1.0.0"
+    status: stable
+
+  - name: control-plane-report
+    path: "templates/control-plane-report.yaml"
+    description: "Daily Control Plane KPI report: hands-free rate, rollback %"
+    trigger_type: cron
+    schedule: "0 9 * * 1-5"
+    model: claude-haiku-4-5
+    channels: [telegram, slack]
+    integrations: [control-plane-api]
+    version: "1.0.0"
+    status: stable
+
+scripts:
+  - name: quickstart
+    path: "scripts/quickstart.sh"
+    description: "5-minute setup: verify install, create USER.md and TOOLS.md, run daily automations setup"
+    idempotent: true
+    status: stable
+
+  - name: setup-daily-automations
+    path: "scripts/setup-daily-automations.sh"
+    description: "Install morning briefing, EOD summary, and weekly report cron jobs"
+    idempotent: true
+    status: stable
+
+  - name: setup-pr-review
+    path: "scripts/setup-pr-review.sh"
+    description: "Configure PR review automation for a specific repo"
+    idempotent: true
+    status: stable
+
+reference_docs:
+  - path: "QUICK_REFERENCE.md"
+    description: "95+ CLI commands in table format — fastest lookup"
+  - path: "CATALOG.md"
+    description: "Complete feature inventory with counts"
+  - path: "OPERATIONS.md"
+    description: "Weekly maintenance routines and failure debugging procedures"
+  - path: "POWER_USER_PLAYBOOK.md"
+    description: "2-hour setup guide and productivity stack framework"
+  - path: "LEARNING-ROADMAP.md"
+    description: "Structured 3-level learning path with role-based tracks"
+  - path: "TROUBLESHOOTING.md"
+    description: "Deep debugging for channels, cron, workflows, auth, browser, cost"
+  - path: "OPENCLAW_PRODUCTIVITY_STACK.md"
+    description: "One-page productivity blueprint"
