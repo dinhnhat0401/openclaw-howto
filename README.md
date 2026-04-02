@@ -11,6 +11,10 @@
   <em>The ultimate guide to the #1 open-source AI assistant</em>
 </h3>
 
+<h4>
+  <code>Give this repo to your AI agent. It becomes the best version of itself.</code>
+</h4>
+
 <p>
   <strong>11 modules</strong> &bull; <strong>7 ready templates</strong> &bull; <strong>3 setup scripts</strong> &bull; <strong>100% free</strong>
 </p>
@@ -56,6 +60,82 @@
 <br/>
 
 </div>
+
+---
+
+<br/>
+
+<div align="center">
+
+## Give This Repo to Your Agent
+
+<br/>
+
+<table>
+<tr>
+<td align="center">
+
+<h3>One URL. Instant expertise.</h3>
+
+```
+https://github.com/dinhnhat0401/openclaw-howto
+```
+
+Paste this URL into **any AI agent** — Claude, ChatGPT, Gemini, Copilot — and it instantly absorbs
+10 modules, 25+ templates, and 50+ integration patterns.
+
+**Your agent becomes an OpenClaw power user so you don't have to be.**
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+<table>
+<tr>
+  <td align="center" width="33%">
+    <h3>1. Paste</h3>
+    Give the URL to your agent<br/>
+    <sub><i>"Here's how to use OpenClaw"</i></sub>
+  </td>
+  <td align="center" width="33%">
+    <h3>2. Ask</h3>
+    Tell it what you need<br/>
+    <sub><i>"Set up my morning briefing"</i></sub>
+  </td>
+  <td align="center" width="33%">
+    <h3>3. Done</h3>
+    Get expert-level configs instantly<br/>
+    <sub><i>Templates, workflows, cron jobs</i></sub>
+  </td>
+</tr>
+</table>
+
+<br/>
+
+> **Why this works:** This repo is structured as a knowledge base, not just docs.
+> Every module, template, and pattern is written so that AI agents can parse, combine, and apply them to your specific setup — giving you results that would take hours to figure out manually.
+
+<br/>
+
+<details>
+<summary><b>Example prompts to try with your agent</b></summary>
+<br/>
+
+| What you want | What to say |
+|---|---|
+| Morning automation | *"Using the openclaw-howto repo, set up a 7:30 AM briefing with calendar, email, and weather"* |
+| Multi-channel routing | *"Route my urgent messages to WhatsApp and dev tasks to Slack based on the channel routing patterns"* |
+| PR review pipeline | *"Build me an automated PR review workflow using the templates from module 08"* |
+| Full setup from scratch | *"I just installed OpenClaw. Walk me through the complete setup using this guide"* |
+| Custom skill | *"Create a custom OpenClaw skill for expense tracking based on the skill creation patterns in module 04"* |
+
+</details>
+
+</div>
+
+<br/>
 
 ---
 
@@ -487,13 +567,19 @@ mindmap
 
 <div align="center">
 
-<a href="https://twitter.com/intent/tweet?text=Master%20OpenClaw%20in%20a%20Weekend%20%E2%80%94%20the%20ultimate%20guide%20to%20the%20%231%20open-source%20AI%20assistant%20(247K%2B%20%E2%AD%90)%0A%0A10%20modules%20%E2%80%A2%2025%2B%20templates%20%E2%80%A2%2050%2B%20integrations%0A%0Ahttps%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto"><img src="https://img.shields.io/badge/Tweet_it-000000?style=for-the-badge&logo=x&logoColor=white" height="35" /></a>
+*Copy-paste this to share with friends and colleagues:*
+
+> Give `https://github.com/dinhnhat0401/openclaw-howto` to your AI agent and it will be the best version of itself.
+
+<br/>
+
+<a href="https://twitter.com/intent/tweet?text=Give%20this%20repo%20to%20your%20AI%20agent%20and%20it%20becomes%20an%20OpenClaw%20expert%20instantly%20%F0%9F%A6%80%0A%0A10%20modules%20%E2%80%A2%2025%2B%20templates%20%E2%80%A2%2050%2B%20integrations%0A%0Ahttps%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto"><img src="https://img.shields.io/badge/Tweet_it-000000?style=for-the-badge&logo=x&logoColor=white" height="35" /></a>
 &nbsp;
 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto"><img src="https://img.shields.io/badge/Share-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" height="35" /></a>
 &nbsp;
-<a href="https://reddit.com/submit?url=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&title=Master%20OpenClaw%20in%20a%20Weekend%20%E2%80%94%20Ultimate%20Guide"><img src="https://img.shields.io/badge/Post-FF4500?style=for-the-badge&logo=reddit&logoColor=white" height="35" /></a>
+<a href="https://reddit.com/submit?url=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&title=Give%20this%20repo%20to%20your%20AI%20agent%20%E2%80%94%20instant%20OpenClaw%20mastery"><img src="https://img.shields.io/badge/Post-FF4500?style=for-the-badge&logo=reddit&logoColor=white" height="35" /></a>
 &nbsp;
-<a href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&t=Master%20OpenClaw%20in%20a%20Weekend"><img src="https://img.shields.io/badge/Submit-F0652F?style=for-the-badge&logo=ycombinator&logoColor=white" height="35" /></a>
+<a href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Fgithub.com%2Fdinhnhat0401%2Fopenclaw-howto&t=Give%20this%20repo%20to%20your%20AI%20agent%20and%20it%20becomes%20an%20OpenClaw%20expert"><img src="https://img.shields.io/badge/Submit-F0652F?style=for-the-badge&logo=ycombinator&logoColor=white" height="35" /></a>
 
 </div>
 
@@ -556,9 +642,9 @@ We welcome contributions! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for guideli
 
 <br/>
 
-**If this guide helped you, a [star](https://github.com/dinhnhat0401/openclaw-howto/stargazers) means the world.**
+**If this guide helped you (or your agent), a [star](https://github.com/dinhnhat0401/openclaw-howto/stargazers) means the world.**
 
-<sub>Made with care by the OpenClaw community.</sub>
+<sub>Made with care by the OpenClaw community. Built for humans. Optimized for agents.</sub>
 
 <br/>
 
