@@ -1,144 +1,189 @@
-# AGENTS.md — AI Agent Guide
+# AGENTS.md
 
-> **Start here.** This file is the entry point for any AI agent working in this repo.
-> Read this before reading anything else.
+> Give this repo to your agent. It will read this file and configure itself to be the best version of itself.
 
-## What This Repo Is
+## What This Does
 
-`openclaw-howto` is the canonical how-to guide for OpenClaw — an open-source AI assistant.
-It contains 11 learning modules, 7 production-ready YAML templates, 3 setup scripts, and
-extensive reference documentation.
+Running through this guide, your agent will:
 
-**Your job as an agent:** improve the repo — fix gaps, add examples, update outdated content,
-add new templates, or optimize for a specific use case. This file tells you the rules.
+1. Learn who you are and how you work
+2. Configure its memory so every future session starts with full context
+3. Install the automations that save you the most time
+4. Connect your most valuable integrations
+5. Set up autonomous workflows that run without you
 
----
-
-## How to Navigate Efficiently
-
-Don't read everything. Use this order:
-
-1. **`.agents/metadata.yaml`** — machine-readable index of every module, template, and script
-   with difficulty, keywords, prerequisites, and status. Start here to find what's relevant.
-2. **`.agents/glossary.yaml`** — controlled vocabulary. Always check this before introducing
-   new terminology.
-3. **`CATALOG.md`** — full command/feature inventory. Check before adding docs for existing features.
-4. **`QUICK_REFERENCE.md`** — most commonly needed commands in one place.
-5. **Module READMEs** (`01-getting-started/README.md` etc.) — individual topic deep-dives.
-6. **`templates/`** — YAML workflow definitions. These are the most copy-pasteable artifacts.
+This is not documentation. This is a bootstrap sequence.
 
 ---
 
-## Conventions (Follow These Exactly)
+## Step 1 — Build Your Memory Files
 
-### File naming
-- Modules: `NN-kebab-case/README.md` (two-digit prefix)
-- Templates: `kebab-case.yaml`
-- Scripts: `kebab-case.sh`
-- Agent metadata: `.agents/*.yaml`
+Memory files are loaded at the start of every session. Without them, your agent starts cold every time. With them, it picks up exactly where you left off.
 
-### Module README structure
-Every module README must have this exact frontmatter comment block at the top:
+Create these 4 files in your working directory:
+
+### USER.md — Who you are
 
 ```markdown
-<!--
-module: NN
-title: Human-readable title
-difficulty: beginner | intermediate | advanced
-time: Xh or Xm
-prerequisites: [list of module numbers or "none"]
-keywords: [comma-separated keywords]
-status: stable | draft | needs-update
--->
+# User Profile
+
+**Name:** [your name]
+**Role:** [your job title / what you do]
+**Primary language:** [English / Vietnamese / etc.]
+**Communication style:** [concise / detailed / bullet points / narrative]
+**Working hours:** [e.g. 9am–7pm JST]
+**Primary device:** [Mac / Linux / Windows]
+
+## Goals
+[What are you trying to accomplish this week / month / quarter?]
+
+## Preferences
+- I prefer [X] over [Y] for code reviews
+- When I ask for a summary, give me [N] bullet points max
+- Always use [language] for variable names
+- [Any other preferences]
+
+## Do Not
+- [Things the agent should never do]
 ```
 
-### Template structure
-All YAML templates must include: `name`, `description`, `version`, `trigger`, `config`, `steps`.
-Steps must use the tool names defined in `.agents/glossary.yaml`.
+### TOOLS.md — What's connected
 
-### Writing style
-- Present tense, imperative mood for instructions ("Run this command", not "You should run")
-- No filler phrases ("Simply", "Just", "Easy", "Note that")
-- Code examples over prose explanations
-- Tables over bullet lists where there are 3+ comparable items
+```markdown
+# Connected Tools
 
----
+## Channels (where I receive messages)
+- Primary: [telegram | slack | whatsapp | email]
+- Backup: [secondary channel]
 
-## What You Can Improve
+## Version Control
+- GitHub username: [your username]
+- Primary repos: [list repos you work on most]
+- Review repos: [repos where you're a regular reviewer]
 
-**High-value tasks (do these first):**
-- Add missing frontmatter to module READMEs (check `.agents/metadata.yaml` `frontmatter: false`)
-- Add templates for common use cases not yet covered
-- Fix any `status: needs-update` entries in metadata
-- Add a self-check quiz section to any module that lacks one
+## Task Management
+- Tool: [Linear | Todoist | Jira | GitHub Issues]
+- Workspace: [workspace name or URL]
 
-**Medium-value tasks:**
-- Add cross-links between related modules where `related_modules` in metadata suggests them
-- Improve code examples with realistic, copy-pasteable values
-- Add a "Common Mistakes" section to modules that don't have one
+## Communication
+- Slack workspace: [workspace]
+- Email: [address]
 
-**Low-value (avoid unless explicitly asked):**
-- Reformatting content that already follows conventions
-- Adding introductory paragraphs to modules
-- Changing terminology (check glossary first)
+## Other integrations
+- [List any other connected services]
+```
 
----
+### AGENTS.md — Agent personas
 
-## What NOT to Do
+```markdown
+# Agent Configuration
 
-- **Don't rename files** — external links and the module numbering system are stable
-- **Don't change glossary terms** without updating all usages across the repo
-- **Don't add new top-level documentation files** without adding them to `CATALOG.md` and
-  updating `.agents/metadata.yaml`
-- **Don't introduce a new tool name** in a template without adding it to `.agents/glossary.yaml`
-- **Don't remove content** — mark it `status: deprecated` in metadata instead
+## Default behavior
+- Model: claude-sonnet-4-6
+- Tone: direct, no filler phrases
+- Code style: [your preferred style]
+- Default branch strategy: [trunk-based | gitflow]
 
----
+## Specialized agents
+- **pr-reviewer**: Reviews PRs. Approves or requests changes. Flags security issues.
+- **morning-briefer**: Sends daily briefing at [time]. Checks GitHub, calendar, email.
+- **task-triager**: Prioritizes open tasks daily based on deadlines and dependencies.
 
-## How to Add a New Module
+## When to escalate to me
+- Any destructive operation (delete, drop, rm -rf)
+- Any push to main/trunk
+- Any external communication on my behalf (emails, Slack DMs)
+- Anything that costs > $1 in a single operation
+```
 
-1. Create `NN-module-name/README.md` (next available two-digit number)
-2. Add frontmatter block (see Conventions above)
-3. Follow the existing module structure: What You'll Learn → Concepts → Examples → Exercises → Next Steps
-4. Add entry to `.agents/metadata.yaml` under `modules`
-5. Add entry to root `README.md` module table
-6. Add entry to `LEARNING-ROADMAP.md` in the correct difficulty tier
-7. Add to `CATALOG.md` if it introduces new commands
+### HEARTBEAT.md — What runs automatically
 
-## How to Add a New Template
+```markdown
+# Recurring Automations
 
-1. Create `templates/kebab-name.yaml`
-2. Include all required fields (name, description, version, trigger, config, steps)
-3. Add entry to `.agents/metadata.yaml` under `templates`
-4. Add entry to `templates/README.md`
+| Name | Schedule | What it does | Channel |
+|------|----------|--------------|---------|
+| morning-briefing | Weekdays 7:30am | Calendar + GitHub + email summary | telegram |
+| pr-review | Weekdays 9am | Review assigned PRs | telegram |
+| eod-summary | Weekdays 6pm | What I shipped + tomorrow's priorities | telegram |
+| weekly-report | Fridays 5pm | Weekly metrics and highlights | telegram |
 
----
-
-## Controlled Vocabulary
-
-See `.agents/glossary.yaml` for the full list. Key terms:
-
-| Term | Meaning | Do NOT use |
-|------|---------|------------|
-| `skill` | A reusable, named capability invoked with `/skillname` | plugin, command, macro |
-| `workflow` | A multi-step automation defined in YAML | pipeline, job, task |
-| `trigger` | An event that starts a workflow | hook, listener, watcher |
-| `channel` | An output target (Telegram, Slack, WhatsApp, etc.) | integration, sink |
-| `integration` | A connected external service (GitHub, Gmail, etc.) | connector, plugin |
-| `cron` | A time-based scheduled automation | scheduler, timer |
+## Notes
+[Any context about why these are configured this way]
+```
 
 ---
 
-## Machine-Readable Inventory
+## Step 2 — Install the Core Automations
 
-`.agents/metadata.yaml` is the authoritative index. It contains every module, template,
-and script with structured properties. When you add or change content, update this file.
+Run this command to install the 4 automations above:
 
-Format for querying with `yq` or Python:
 ```bash
-# List all modules with status=needs-update
-yq '.modules[] | select(.status == "needs-update") | .title' .agents/metadata.yaml
-
-# List all templates by trigger type
-yq '.templates[] | [.name, .trigger_type] | @tsv' .agents/metadata.yaml
+openclaw workflow import templates/morning-briefing.yaml
+openclaw workflow import templates/end-of-day-summary.yaml
+openclaw workflow import templates/weekly-report.yaml
+openclaw workflow import templates/pr-pipeline.yaml
 ```
+
+Or run the setup script which handles everything including timezone and channel config:
+
+```bash
+bash scripts/bootstrap-agent.sh
+```
+
+---
+
+## Step 3 — Verify Setup
+
+After running the bootstrap script, verify:
+
+```bash
+# Memory files exist
+ls USER.md TOOLS.md AGENTS.md HEARTBEAT.md
+
+# Automations are scheduled
+openclaw cron list
+
+# Test a channel message
+openclaw "Send me a test message on [your primary channel]"
+```
+
+---
+
+## Step 4 — First Session Prompt
+
+In your first session after setup, send this:
+
+```
+Read USER.md, TOOLS.md, AGENTS.md, and HEARTBEAT.md.
+Summarize what you know about me and what automations are running.
+Tell me if anything looks misconfigured or missing.
+```
+
+A well-configured agent should respond with an accurate summary of your profile, tools, and running automations — with no gaps.
+
+---
+
+## What "Best Version of Itself" Looks Like
+
+Your agent is fully configured when:
+
+- [ ] Every session starts with full context (no re-explaining who you are)
+- [ ] Morning briefing arrives before you start work
+- [ ] PRs are reviewed autonomously — you only see the outcome
+- [ ] EOD summary arrives without you asking
+- [ ] You've gone 3 days without having to tell the agent something it should have known
+
+If any of those aren't true, there's a gap in the memory files or automations. Fix it and re-run setup.
+
+---
+
+## Reference
+
+- `memory-templates/` — pre-filled templates for all memory files, ready to customize
+- `templates/` — YAML workflow definitions for all automations
+- `scripts/bootstrap-agent.sh` — fully automated setup script
+- `.agents/metadata.yaml` — machine-readable index of everything in this repo
+- `.agents/glossary.yaml` — controlled vocabulary (skill, workflow, trigger, channel, etc.)
+- `QUICK_REFERENCE.md` — all CLI commands
+- `TROUBLESHOOTING.md` — when things break
